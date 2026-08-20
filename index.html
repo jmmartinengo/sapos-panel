@@ -67,10 +67,8 @@ body{font-family:Arial,sans-serif;background:#f5f5f5;color:#222;padding:1.5rem}
 
 <script>
 var TODAY = new Date();
-var REVEAL_DAYS = 7;
-
 var data = [
-  {slot:1, fecha:"2026-09-01", ep:"T1E1: SOPs del Barro", consultora:"(por confirmar)", estado:"pendiente", reservado:false,
+  {slot:1, fecha:"2026-09-01", ep:"T1E1: SOPs del Barro", consultora:"(por confirmar)", estado:"pendiente", revelado:true, current:true, reservado:false,
    members:[
     {n:"Silva Solian, Mauro Federico",d:"pc"},
     {n:"Quiñones, Francisco",d:"cel"},
@@ -78,7 +76,7 @@ var data = [
     {n:"Carchidi, Viviana",d:"cel"},
     {n:"Sidra, Talia",d:"cel"}
   ]},
-  {slot:2, fecha:"2026-09-08", ep:"T1E2: La Agenda de un Loco", consultora:"(por confirmar)", estado:"pendiente", reservado:false,
+  {slot:2, fecha:"2026-09-08", ep:"T1E2: La Agenda de un Loco", consultora:"(por confirmar)", estado:"pendiente", revelado:false, current:false, reservado:false,
    members:[
     {n:"Coste, Antonella",d:"pc"},
     {n:"Fraticelli, Ania",d:"pc"},
@@ -86,7 +84,7 @@ var data = [
     {n:"Riviere, Micaela",d:"pc"},
     {n:"Reales, Maia",d:"cel"}
   ]},
-  {slot:3, fecha:"2026-09-15", ep:"T1E3: SUMA y Sigue", consultora:"(por confirmar)", estado:"pendiente", reservado:false,
+  {slot:3, fecha:"2026-09-15", ep:"T1E3: SUMA y Sigue", consultora:"(por confirmar)", estado:"pendiente", revelado:false, current:false, reservado:false,
    members:[
     {n:"Angonoa, Gianina Nadine",d:"pc"},
     {n:"Rui, Micaela",d:"pc"},
@@ -94,7 +92,7 @@ var data = [
     {n:"Duran, Luciano",d:"pc"},
     {n:"Noguera, Brenda",d:"tab"}
   ]},
-  {slot:4, fecha:"2026-09-22", ep:"T1E4: Se BUSCARV al Culpable", consultora:"(por confirmar)", estado:"pendiente", reservado:false,
+  {slot:4, fecha:"2026-09-22", ep:"T1E4: Se BUSCARV al Culpable", consultora:"(por confirmar)", estado:"pendiente", revelado:false, current:false, reservado:false,
    members:[
     {n:"Torres D'Albano, Uriel",d:"pc"},
     {n:"Pedraza, Valentin",d:"pc"},
@@ -102,8 +100,8 @@ var data = [
     {n:"Sanchez, Leila",d:"cel"},
     {n:"Sanchez, Eliana",d:"pc"}
   ]},
-  {slot:"TP", fecha:"2026-09-29", ep:"TRABAJO PRÁCTICO OBLIGATORIO", consultora:"Sin exposición", estado:"tp", reservado:false, members:[]},
-  {slot:5, fecha:"2026-10-06", ep:"T1E5: Guardar las FORMas", consultora:"(por confirmar)", estado:"pendiente", reservado:false,
+  {slot:"TP", fecha:"2026-09-29", ep:"TRABAJO PRÁCTICO OBLIGATORIO", consultora:"Sin exposición", estado:"tp", revelado:false, current:false, reservado:false, members:[]},
+  {slot:5, fecha:"2026-10-06", ep:"T1E5: Guardar las FORMas", consultora:"(por confirmar)", estado:"pendiente", revelado:false, current:false, reservado:false,
    members:[
     {n:"Candia, Morena",d:"pc"},
     {n:"Sanchez, Florencia Belen",d:"pc"},
@@ -111,7 +109,7 @@ var data = [
     {n:"Reynoso, Agustina M. Oriana",d:"cel"},
     {n:"Sanchez, Milagros",d:"cel"}
   ]},
-  {slot:6, fecha:"2026-10-13", ep:"T1E6: ¡Prompt-o Socorro!", consultora:"(por confirmar)", estado:"pendiente", reservado:false,
+  {slot:6, fecha:"2026-10-13", ep:"T1E6: ¡Prompt-o Socorro!", consultora:"(por confirmar)", estado:"pendiente", revelado:false, current:false, reservado:false,
    members:[
     {n:"Villa, Micaela",d:"pc"},
     {n:"Lopez, Matias Valentin",d:"pc"},
@@ -119,7 +117,7 @@ var data = [
     {n:"Barbero, Luz",d:"cel"},
     {n:"Cabutto, Delfina",d:"cel"}
   ]},
-  {slot:7, fecha:"2026-10-20", ep:"T1E7: Atrayendo Nuevos Aliados", consultora:"(por confirmar)", estado:"pendiente", reservado:false,
+  {slot:7, fecha:"2026-10-20", ep:"T1E7: Atrayendo Nuevos Aliados", consultora:"(por confirmar)", estado:"pendiente", revelado:false, current:false, reservado:false,
    members:[
     {n:"Servin, David",d:"pc"},
     {n:"Campañó, Alvaro",d:"cel"},
@@ -127,7 +125,7 @@ var data = [
     {n:"Gutiérrez, Lucia Gutiérrez",d:"pc"},
     {n:"Ferretjans, Felicitas",d:"pc"}
   ]},
-  {slot:8, fecha:"2026-10-27", ep:"T1E8+E9: La Gran Migración", consultora:"(por confirmar)", estado:"pendiente", reservado:false,
+  {slot:8, fecha:"2026-10-27", ep:"T1E8+E9: La Gran Migración", consultora:"(por confirmar)", estado:"pendiente", revelado:false, current:false, reservado:false,
    members:[
     {n:"Rosales Vanega, Soledad",d:"pc"},
     {n:"Novillo, Valentina",d:"pc"},
@@ -136,8 +134,8 @@ var data = [
     {n:"Dominguez Barrera, Paula",d:"cel"},
     {n:"Zalazar Amaya, Marianela",d:"tab"}
   ]},
-  {slot:"R1", fecha:"2026-11-03", ep:"Exposición reservada", consultora:"Consultora por incorporar", estado:"reservado", reservado:true, members:[]},
-  {slot:"R2", fecha:"2026-11-03", ep:"Exposición reservada", consultora:"Consultora por incorporar", estado:"reservado", reservado:true, members:[]}
+  {slot:"R1", fecha:"2026-11-03", ep:"Exposición reservada", consultora:"Consultora por incorporar", estado:"reservado", revelado:false, current:false, reservado:true, members:[]},
+  {slot:"R2", fecha:"2026-11-03", ep:"Exposición reservada", consultora:"Consultora por incorporar", estado:"reservado", revelado:false, current:false, reservado:true, members:[]}
 ];
 
 function parseDate(s){var p=s.split('-');return new Date(+p[0],+p[1]-1,+p[2]);}
@@ -147,13 +145,8 @@ function formatDate(s){
   var meses=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
   return dias[d.getDay()]+' '+d.getDate()+' '+meses[d.getMonth()];
 }
-function isRevealed(s){return (parseDate(s)-TODAY)/86400000<=REVEAL_DAYS;}
-function isCurrent(s){var diff=(parseDate(s)-TODAY)/86400000;return diff>=-6&&diff<=0;}
-function revealDate(s){
-  var d=parseDate(s);d.setDate(d.getDate()-REVEAL_DAYS);
-  var m=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
-  return d.getDate()+' '+m[d.getMonth()];
-}
+function isRevealed(item){return item.revelado===true;}
+function isCurrent(item){return item.current===true;}
 
 var devC={pc:'av-pc',cel:'av-cel',tab:'av-tab'};
 var devL={pc:'PC',cel:'CEL',tab:'TAB'};
@@ -185,10 +178,10 @@ function render(){
     if(item.reservado){
       return '<div class="card reservado"><div class="card-top"><span class="card-num">📋</span><div class="card-main"><div class="card-name">Slot reservado</div><div class="card-date">📅 '+formatDate(item.fecha)+' · Para estudiantes que se incorporen</div></div>'+badgeHTML(item.estado)+'</div></div>';
     }
-    var revealed=isRevealed(item.fecha);
-    var current=isCurrent(item.fecha);
+    var revealed=isRevealed(item);
+    var current=isCurrent(item);
     if(!revealed){
-      return '<div class="card locked"><div class="card-top"><span class="card-num">'+item.slot+'</span><div style="display:flex;align-items:center;gap:10px;flex:1"><span style="font-size:22px;color:#ccc">🔒</span><div><div style="font-size:13px;color:#aaa">Consultora por revelar</div><div style="font-size:11px;color:#bbb;margin-top:2px">Se revela el '+revealDate(item.fecha)+' &middot; Clase: '+formatDate(item.fecha)+'</div></div></div><span class="badge badge-locked">Bloqueada</span></div></div>';
+      return '<div class="card locked"><div class="card-top"><span class="card-num">'+item.slot+'</span><div style="display:flex;align-items:center;gap:10px;flex:1"><span style="font-size:22px;color:#ccc">🔒</span><div><div style="font-size:13px;color:#aaa">Consultora por revelar</div><div style="font-size:11px;color:#bbb;margin-top:2px">Clase: '+formatDate(item.fecha)+'</div></div></div><span class="badge badge-locked">Bloqueada</span></div></div>';
     }
     var membersHTML='';
     if(item.members.length){
