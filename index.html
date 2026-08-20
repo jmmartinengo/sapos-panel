@@ -39,10 +39,6 @@ body{font-family:Arial,sans-serif;background:#f5f5f5;color:#222;padding:1.5rem}
 .members-wrap{border-top:1px solid #f0f0f0;padding-top:.65rem;margin-top:.5rem}
 .members-title{font-size:11px;color:#999;margin-bottom:.4rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em}
 .member{display:flex;align-items:center;gap:8px;padding:3px 0}
-.av{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;flex-shrink:0}
-.av-pc{background:#E3F2FD;color:#1565C0}
-.av-cel{background:#FFF8E1;color:#E65100}
-.av-tab{background:#E8F5E9;color:#2E7D32}
 .member-name{font-size:12px;color:#333}
 .card-tp{background:#FFF3E0;border-color:#FFB74D}
 .current-badge{font-size:11px;font-weight:600;color:#1565C0;margin-bottom:.3rem}
@@ -177,8 +173,6 @@ function formatDate(s){
   return dias[d.getDay()]+' '+d.getDate()+' '+meses[d.getMonth()];
 }
 
-var devC={pc:'av-pc',cel:'av-cel',tab:'av-tab'};
-var devL={pc:'PC',cel:'CEL',tab:'TAB'};
 
 function badgeHTML(estado){
   if(estado==='tp') return '<span class="badge badge-tp">Sin exposición</span>';
@@ -217,7 +211,7 @@ function render(){
     if(item.members.length){
       membersHTML='<div class="members-wrap"><div class="members-title">Integrantes</div>'+
         item.members.map(function(m){
-          return '<div class="member"><div class="av '+devC[m.d]+'">'+devL[m.d]+'</div><div class="member-name">'+m.n+'</div></div>';
+          return '<div class="member"><div class="member-name">'+m.n+'</div></div>';
         }).join('')+'</div>';
     }
     return '<div class="card'+(current?' current':'')+'"><div class="card-top"><span class="card-num">'+item.slot+'</span><div class="card-main">'+(current?'<div class="current-badge">⭐ Estadía en curso</div>':'')+
