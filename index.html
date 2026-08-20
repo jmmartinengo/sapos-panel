@@ -9,12 +9,9 @@
 body{font-family:Arial,sans-serif;background:#f5f5f5;color:#222;padding:1.5rem}
 .hdr{text-align:center;background:#1E3A0F;color:#fff;padding:1.2rem 1.5rem;border-radius:12px;margin-bottom:1.5rem}
 .hdr-agency{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7DC95E;margin-bottom:.3rem}
-.hdr-tagline{font-size:11px;color:#9ABF88;margin-bottom:.5rem;letter-spacing:.02em}
 .hdr-title{font-size:22px;font-weight:700;margin-bottom:.2rem}
+.hdr-tagline{font-size:11px;color:#9ABF88;margin-bottom:.1rem}
 .hdr-sub{font-size:13px;color:#9ABF88}
-.tabs{display:flex;gap:8px;margin-bottom:1.2rem;justify-content:center}
-.tab{padding:7px 22px;border-radius:8px;border:1.5px solid #ccc;background:#fff;color:#555;font-size:13px;cursor:pointer;font-family:Arial,sans-serif;transition:all .15s}
-.tab.active{background:#1E3A0F;color:#fff;border-color:#1E3A0F;font-weight:600}
 .search-wrap{position:relative;margin-bottom:1.2rem;max-width:420px;margin-left:auto;margin-right:auto}
 .search-wrap input{width:100%;padding:9px 14px 9px 38px;border:1.5px solid #ddd;border-radius:8px;font-size:14px;font-family:Arial,sans-serif;background:#fff}
 .search-wrap input:focus{outline:none;border-color:#2E6B14}
@@ -30,7 +27,7 @@ body{font-family:Arial,sans-serif;background:#f5f5f5;color:#222;padding:1.5rem}
 .card-main{flex:1}
 .card-episode{font-size:11px;color:#2E6B14;font-weight:600;margin-bottom:.15rem;text-transform:uppercase;letter-spacing:.05em}
 .card-name{font-size:15px;font-weight:700;color:#1a1a1a;margin-bottom:.1rem}
-.card-date{font-size:12px;color:#777;display:flex;align-items:center;gap:4px}
+.card-date{font-size:12px;color:#777}
 .badge{font-size:11px;font-weight:600;padding:3px 10px;border-radius:5px;white-space:nowrap;flex-shrink:0}
 .badge-done{background:#E8F5E9;color:#2E7D32}
 .badge-current{background:#E3F2FD;color:#1565C0}
@@ -38,6 +35,7 @@ body{font-family:Arial,sans-serif;background:#f5f5f5;color:#222;padding:1.5rem}
 .badge-pending{background:#F5F5F5;color:#757575;border:1px solid #ddd}
 .badge-locked{background:#F5F5F5;color:#BDBDBD;border:1px solid #e0e0e0}
 .badge-reservado{background:#FFF8E1;color:#F57F17;border:1px solid #FFE082}
+.badge-tp{background:#FFF3E0;color:#E65100;border:1px solid #FFB74D}
 .members-wrap{border-top:1px solid #f0f0f0;padding-top:.65rem;margin-top:.5rem}
 .members-title{font-size:11px;color:#999;margin-bottom:.4rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em}
 .member{display:flex;align-items:center;gap:8px;padding:3px 0}
@@ -45,27 +43,18 @@ body{font-family:Arial,sans-serif;background:#f5f5f5;color:#222;padding:1.5rem}
 .av-pc{background:#E3F2FD;color:#1565C0}
 .av-cel{background:#FFF8E1;color:#E65100}
 .av-tab{background:#E8F5E9;color:#2E7D32}
-.member-name{font-size:12px;color:#333;flex:1}
-.member-tags{display:flex;gap:3px;flex-wrap:wrap}
-.mtag{font-size:9px;padding:1px 5px;border-radius:3px;border:1px solid #e0e0e0;color:#666;background:#fafafa}
-.mtag-h{background:#E8F5E9;color:#2E7D32;border-color:#A5D6A7}
-.mtag-af{background:#E3F2FD;color:#1565C0;border-color:#90CAF9}
-.mtag-sh4{background:#FFEBEE;color:#C62828;border-color:#FFCDD2}
-.lock-wrap{display:flex;align-items:center;gap:10px;padding:.3rem 0}
-.lock-icon{font-size:20px;color:#ccc}
-.lock-info{font-size:13px;color:#aaa}
-.lock-date{font-size:11px;color:#bbb;margin-top:2px}
+.member-name{font-size:12px;color:#333}
+.card-tp{background:#FFF3E0;border-color:#FFB74D}
 .current-badge{font-size:11px;font-weight:600;color:#1565C0;margin-bottom:.3rem}
 .no-results{text-align:center;padding:2rem;color:#aaa;font-size:14px}
-.card-tp{background:#FFF3E0;border-color:#FFB74D}
-.badge-tp{background:#FFF3E0;color:#E65100;border:1px solid #FFB74D}
 </style>
 </head>
 <body>
+
 <div class="hdr">
   <div class="hdr-agency">Agencia SAPOS – FTA</div>
-  <div class="hdr-tagline">Servicios de Automatización Profesional y Optimización de Sistemas</div>
   <div class="hdr-title">Panel de Estadías en La Pachequense</div>
+  <div class="hdr-tagline">Servicio de Asistencia Profesional y Optimización de Sistemas</div>
   <div class="hdr-sub">Informática Aplicada · Tecnicatura Universitaria en Hotelería · Comisión 2 (martes) · Ciclo 2026</div>
 </div>
 
@@ -74,7 +63,149 @@ body{font-family:Arial,sans-serif;background:#f5f5f5;color:#222;padding:1.5rem}
   <input type="text" id="buscar" placeholder="Buscar por apellido o consultora..." oninput="render()">
 </div>
 
+<div class="cards" id="cards"></div>
 
+<script>
+var TODAY = new Date();
+var REVEAL_DAYS = 7;
 
+var data = [
+  {slot:1, fecha:"2026-09-01", ep:"T1E1: SOPs del Barro", consultora:"(por confirmar)", estado:"pendiente", reservado:false,
+   members:[
+    {n:"Silva Solian, Mauro Federico",d:"pc"},
+    {n:"Quiñones, Francisco",d:"cel"},
+    {n:"Bartolini, Luciana",d:"pc"},
+    {n:"Carchidi, Viviana",d:"cel"},
+    {n:"Sidra, Talia",d:"cel"}
+  ]},
+  {slot:2, fecha:"2026-09-08", ep:"T1E2: La Agenda de un Loco", consultora:"(por confirmar)", estado:"pendiente", reservado:false,
+   members:[
+    {n:"Coste, Antonella",d:"pc"},
+    {n:"Fraticelli, Ania",d:"pc"},
+    {n:"Heredia, Ayelen",d:"pc"},
+    {n:"Riviere, Micaela",d:"pc"},
+    {n:"Reales, Maia",d:"cel"}
+  ]},
+  {slot:3, fecha:"2026-09-15", ep:"T1E3: SUMA y Sigue", consultora:"(por confirmar)", estado:"pendiente", reservado:false,
+   members:[
+    {n:"Angonoa, Gianina Nadine",d:"pc"},
+    {n:"Rui, Micaela",d:"pc"},
+    {n:"Pelegrine, Lautaro Damián",d:"pc"},
+    {n:"Duran, Luciano",d:"pc"},
+    {n:"Noguera, Brenda",d:"tab"}
+  ]},
+  {slot:4, fecha:"2026-09-22", ep:"T1E4: Se BUSCARV al Culpable", consultora:"(por confirmar)", estado:"pendiente", reservado:false,
+   members:[
+    {n:"Torres D'Albano, Uriel",d:"pc"},
+    {n:"Pedraza, Valentin",d:"pc"},
+    {n:"Bernaola Guerrero, Bruno J.",d:"pc"},
+    {n:"Sanchez, Leila",d:"cel"},
+    {n:"Sanchez, Eliana",d:"pc"}
+  ]},
+  {slot:"TP", fecha:"2026-09-29", ep:"TRABAJO PRÁCTICO OBLIGATORIO", consultora:"Sin exposición", estado:"tp", reservado:false, members:[]},
+  {slot:5, fecha:"2026-10-06", ep:"T1E5: Guardar las FORMas", consultora:"(por confirmar)", estado:"pendiente", reservado:false,
+   members:[
+    {n:"Candia, Morena",d:"pc"},
+    {n:"Sanchez, Florencia Belen",d:"pc"},
+    {n:"Pruyas, Agustina",d:"pc"},
+    {n:"Reynoso, Agustina M. Oriana",d:"cel"},
+    {n:"Sanchez, Milagros",d:"cel"}
+  ]},
+  {slot:6, fecha:"2026-10-13", ep:"T1E6: ¡Prompt-o Socorro!", consultora:"(por confirmar)", estado:"pendiente", reservado:false,
+   members:[
+    {n:"Villa, Micaela",d:"pc"},
+    {n:"Lopez, Matias Valentin",d:"pc"},
+    {n:"Ferreyra, Rocio Milagros",d:"tab"},
+    {n:"Barbero, Luz",d:"cel"},
+    {n:"Cabutto, Delfina",d:"cel"}
+  ]},
+  {slot:7, fecha:"2026-10-20", ep:"T1E7: Atrayendo Nuevos Aliados", consultora:"(por confirmar)", estado:"pendiente", reservado:false,
+   members:[
+    {n:"Servin, David",d:"pc"},
+    {n:"Campañó, Alvaro",d:"cel"},
+    {n:"Macias, Abril Narela",d:"pc"},
+    {n:"Gutiérrez, Lucia Gutiérrez",d:"pc"},
+    {n:"Ferretjans, Felicitas",d:"pc"}
+  ]},
+  {slot:8, fecha:"2026-10-27", ep:"T1E8+E9: La Gran Migración", consultora:"(por confirmar)", estado:"pendiente", reservado:false,
+   members:[
+    {n:"Rosales Vanega, Soledad",d:"pc"},
+    {n:"Novillo, Valentina",d:"pc"},
+    {n:"Vaquera, Malena",d:"pc"},
+    {n:"Ozan, Selene",d:"pc"},
+    {n:"Dominguez Barrera, Paula",d:"cel"},
+    {n:"Zalazar Amaya, Marianela",d:"tab"}
+  ]},
+  {slot:"R1", fecha:"2026-11-03", ep:"Exposición reservada", consultora:"Consultora por incorporar", estado:"reservado", reservado:true, members:[]},
+  {slot:"R2", fecha:"2026-11-03", ep:"Exposición reservada", consultora:"Consultora por incorporar", estado:"reservado", reservado:true, members:[]}
+];
+
+function parseDate(s){var p=s.split('-');return new Date(+p[0],+p[1]-1,+p[2]);}
+function formatDate(s){
+  var d=parseDate(s);
+  var dias=['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
+  var meses=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+  return dias[d.getDay()]+' '+d.getDate()+' '+meses[d.getMonth()];
+}
+function isRevealed(s){return (parseDate(s)-TODAY)/86400000<=REVEAL_DAYS;}
+function isCurrent(s){var diff=(parseDate(s)-TODAY)/86400000;return diff>=-6&&diff<=0;}
+function revealDate(s){
+  var d=parseDate(s);d.setDate(d.getDate()-REVEAL_DAYS);
+  var m=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+  return d.getDate()+' '+m[d.getMonth()];
+}
+
+var devC={pc:'av-pc',cel:'av-cel',tab:'av-tab'};
+var devL={pc:'PC',cel:'CEL',tab:'TAB'};
+
+function badgeHTML(estado){
+  if(estado==='tp') return '<span class="badge badge-tp">Sin exposición</span>';
+  if(estado==='reservado') return '<span class="badge badge-reservado">Reservado</span>';
+  var map={realizada:'badge-done',retrasada:'badge-late',pendiente:'badge-pending'};
+  var lab={realizada:'Realizada',retrasada:'Retrasada',pendiente:'Pendiente'};
+  return '<span class="badge '+(map[estado]||'badge-pending')+'">'+(lab[estado]||'Pendiente')+'</span>';
+}
+
+function render(){
+  var q=(document.getElementById('buscar').value||'').toLowerCase().trim();
+  var c=document.getElementById('cards');
+  var list=data;
+  if(q){
+    list=list.filter(function(item){
+      if(item.estado==='tp'||item.reservado) return false;
+      if(item.consultora.toLowerCase().includes(q)) return true;
+      return item.members.some(function(m){return m.n.toLowerCase().includes(q);});
+    });
+  }
+  if(!list.length){c.innerHTML='<div class="no-results">Sin resultados para "'+q+'"</div>';return;}
+  c.innerHTML=list.map(function(item){
+    if(item.estado==='tp'){
+      return '<div class="card card-tp"><div class="card-top"><span class="card-num">TP</span><div class="card-main"><div class="card-name">Trabajo Práctico Obligatorio</div><div class="card-date">📅 '+formatDate(item.fecha)+'</div></div>'+badgeHTML(item.estado)+'</div></div>';
+    }
+    if(item.reservado){
+      return '<div class="card reservado"><div class="card-top"><span class="card-num">📋</span><div class="card-main"><div class="card-name">Slot reservado</div><div class="card-date">📅 '+formatDate(item.fecha)+' · Para estudiantes que se incorporen</div></div>'+badgeHTML(item.estado)+'</div></div>';
+    }
+    var revealed=isRevealed(item.fecha);
+    var current=isCurrent(item.fecha);
+    if(!revealed){
+      return '<div class="card locked"><div class="card-top"><span class="card-num">'+item.slot+'</span><div style="display:flex;align-items:center;gap:10px;flex:1"><span style="font-size:22px;color:#ccc">🔒</span><div><div style="font-size:13px;color:#aaa">Consultora por revelar</div><div style="font-size:11px;color:#bbb;margin-top:2px">Se revela el '+revealDate(item.fecha)+' &middot; Clase: '+formatDate(item.fecha)+'</div></div></div><span class="badge badge-locked">Bloqueada</span></div></div>';
+    }
+    var membersHTML='';
+    if(item.members.length){
+      membersHTML='<div class="members-wrap"><div class="members-title">Integrantes</div>'+
+        item.members.map(function(m){
+          return '<div class="member"><div class="av '+devC[m.d]+'">'+devL[m.d]+'</div><div class="member-name">'+m.n+'</div></div>';
+        }).join('')+'</div>';
+    }
+    return '<div class="card'+(current?' current':'')+'"><div class="card-top"><span class="card-num">'+item.slot+'</span><div class="card-main">'+(current?'<div class="current-badge">⭐ Estadía en curso</div>':'')+
+      '<div class="card-episode">'+item.ep+'</div>'+
+      '<div class="card-name">'+item.consultora+'</div>'+
+      '<div class="card-date">📅 '+formatDate(item.fecha)+'</div>'+
+      '</div>'+badgeHTML(item.estado)+'</div>'+membersHTML+'</div>';
+  }).join('');
+}
+
+render();
+</script>
 </body>
 </html>
