@@ -69,6 +69,7 @@ body{font-family:Arial,sans-serif;background:#f5f5f5;color:#222;padding:1.5rem}
 
 <div class="cards" id="cards"></div>
 
+<script src="consultoras.js"></script>
 <script>
 /* ============================================================
    PANEL DE CONTROL — editá SOLO este bloque cada semana.
@@ -100,44 +101,48 @@ var PANEL = {
   "RECU":  {revelado:false, current:false, estado:"especial"}
 };
 /* ------------------------------------------------------------
-   Los INTEGRANTES no se cargan acá: viven en consultoras.html,
-   que es la única fuente de los grupos. Este archivo solo dice
-   qué semana expone cada consultora.
+   Los INTEGRANTES y los NOMBRES de los grupos viven en
+   consultoras.js, que es la única fuente. Este archivo solo
+   dice qué semana expone cada consultora.
 
-   Para revelar una semana, poné revelado:true arriba y escribí
-   el nombre del grupo en su "consultora", igual que aparece en
-   consultoras.html. Mientras siga en "(por confirmar)", nadie
-   puede deducir a quién le toca — ni mirando el código fuente.
+   Para revelar una semana: poné revelado:true arriba y escribí
+   el id del grupo en su "grupo" (g1, g2, ... g10). El nombre
+   y el enlace se arman solos, así que si el grupo se rebautiza
+   no hace falta tocar nada acá.
+
+   Mientras "grupo" siga vacío, nadie puede deducir a quién le
+   toca esa fecha, ni mirando el código fuente.
    ------------------------------------------------------------ */
 
 var data = [
-  {slot:"INTRO", fecha:"2026-08-24", ep:"El Piloto de la Serie: Bienvenidos a Monte Macondo", unidad:"", nota:"Introducción", consultora:""},
-  {slot:"DEMO",  fecha:"2026-08-31", ep:"T1E1: SOPs del Barro 🐸", unidad:"Unidad 1: Drive y Docs", nota:"1° Clase de Demostración", consultora:""},
+  {slot:"INTRO", fecha:"2026-08-24", ep:"El Piloto de la Serie: Bienvenidos a Monte Macondo", unidad:"", nota:"Introducción", grupo:""},
+  {slot:"DEMO",  fecha:"2026-08-31", ep:"T1E1: SOPs del Barro 🐸", unidad:"Unidad 1: Drive y Docs", nota:"1° Clase de Demostración", grupo:""},
 
-  {slot:1,  fecha:"2026-09-07", ep:"T1E2: La Agenda de un Loco", unidad:"Unidad 2: Calendar", consultora:"(por confirmar)"},
-  {slot:2,  fecha:"2026-09-14", ep:"T1E3: SUMA y Sigue", unidad:"Unidad 3: Sheets", consultora:"(por confirmar)"},
-  {slot:3,  fecha:"2026-09-21", ep:"T1E4: Se BUSCARV al Culpable", unidad:"Unidad 3: Sheets", consultora:"(por confirmar)"},
-  {slot:4,  fecha:"2026-09-28", ep:"T1E5: Guardar las FORMas", unidad:"Unidad 4: Forms", consultora:"(por confirmar)"},
+  {slot:1,  fecha:"2026-09-07", ep:"T1E2: La Agenda de un Loco", unidad:"Unidad 2: Calendar", grupo:""},
+  {slot:2,  fecha:"2026-09-14", ep:"T1E3: SUMA y Sigue", unidad:"Unidad 3: Sheets", grupo:""},
+  {slot:3,  fecha:"2026-09-21", ep:"T1E4: Se BUSCARV al Culpable", unidad:"Unidad 3: Sheets", grupo:""},
+  {slot:4,  fecha:"2026-09-28", ep:"T1E5: Guardar las FORMas", unidad:"Unidad 4: Forms", grupo:""},
 
-  {slot:"EXPR",  fecha:"2026-10-05", ep:"EXAMEN PRÁCTICO", unidad:"", nota:"Examen Práctico", consultora:""},
+  {slot:"EXPR",  fecha:"2026-10-05", ep:"EXAMEN PRÁCTICO", unidad:"", nota:"Examen Práctico", grupo:""},
 
-  {slot:5,  fecha:"2026-10-12", ep:"T1E6: Poniendo a Macondo en el Mapa", unidad:"Unidad 5.1: Maps y MyMaps", consultora:"(por confirmar)"},
-  {slot:6,  fecha:"2026-10-19", ep:"T1E7: ¡Prompt-o Socorro!", unidad:"Unidad 5.2: AI Generativa", consultora:"(por confirmar)"},
-  {slot:7,  fecha:"2026-10-26", ep:"T1E8: Un Pitch Vale Más que Mil Palabras", unidad:"Unidad 5.3: Slides", consultora:"(por confirmar)"},
-  {slot:8,  fecha:"2026-10-26", ep:"T1E8: Un Pitch Vale Más que Mil Palabras", unidad:"Unidad 5.3: Slides", consultora:"(por confirmar)"},
-  {slot:9,  fecha:"2026-11-02", ep:"T1E9: P.M.S: (Pachequense Migra al Sistema)", unidad:"Unidad 6: PXSOL", consultora:"(por confirmar)"},
-  {slot:10, fecha:"2026-11-02", ep:"T1E9: P.M.S: (Pachequense Migra al Sistema)", unidad:"Unidad 6: PXSOL", consultora:"(por confirmar)"},
+  {slot:5,  fecha:"2026-10-12", ep:"T1E6: Poniendo a Macondo en el Mapa", unidad:"Unidad 5.1: Maps y MyMaps", grupo:""},
+  {slot:6,  fecha:"2026-10-19", ep:"T1E7: ¡Prompt-o Socorro!", unidad:"Unidad 5.2: AI Generativa", grupo:""},
+  {slot:7,  fecha:"2026-10-26", ep:"T1E8: Un Pitch Vale Más que Mil Palabras", unidad:"Unidad 5.3: Slides", grupo:""},
+  {slot:8,  fecha:"2026-10-26", ep:"T1E8: Un Pitch Vale Más que Mil Palabras", unidad:"Unidad 5.3: Slides", grupo:""},
+  {slot:9,  fecha:"2026-11-02", ep:"T1E9: P.M.S: (Pachequense Migra al Sistema)", unidad:"Unidad 6: PXSOL", grupo:""},
+  {slot:10, fecha:"2026-11-02", ep:"T1E9: P.M.S: (Pachequense Migra al Sistema)", unidad:"Unidad 6: PXSOL", grupo:""},
 
-  {slot:"PARC",  fecha:"2026-11-09", ep:"PARCIAL", unidad:"", nota:"Examen Parcial", consultora:""},
-  {slot:"RECU",  fecha:"2026-11-16", ep:"RECUPERATORIOS", unidad:"", nota:"Examen Recuperatorio", consultora:""}
+  {slot:"PARC",  fecha:"2026-11-09", ep:"PARCIAL", unidad:"", nota:"Examen Parcial", grupo:""},
+  {slot:"RECU",  fecha:"2026-11-16", ep:"RECUPERATORIOS", unidad:"", nota:"Examen Recuperatorio", grupo:""}
 ];
 
-function slug(s){
-  return String(s).toLowerCase()
-    .replace(/á/g,'a').replace(/é/g,'e').replace(/í/g,'i')
-    .replace(/ó/g,'o').replace(/ú/g,'u').replace(/ñ/g,'n')
-    .replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+
+function grupoDe(item){
+  if(!item.grupo) return null;
+  for(var i=0;i<CONSULTORAS.length;i++){ if(CONSULTORAS[i].id===item.grupo) return CONSULTORAS[i]; }
+  return null;
 }
+function nombreGrupo(item){var g=grupoDe(item);return g?g.nombre:'(por confirmar)';}
 
 function cfg(item){return PANEL[item.slot]||{};}
 function isRevealed(item){return cfg(item).revelado===true;}
@@ -170,7 +175,7 @@ function render(){
   if(q){
     list=list.filter(function(item){
       if(estadoDe(item)==='especial') return false;
-      if(item.consultora.toLowerCase().includes(q)) return true;
+      if(nombreGrupo(item).toLowerCase().includes(q)) return true;
       return false;
     });
   }
@@ -187,10 +192,11 @@ function render(){
     if(!isRevealed(item)){
       return '<div class="card locked"><div class="card-top"><span class="card-num">'+item.slot+'</span><div style="display:flex;align-items:center;gap:10px;flex:1"><span style="font-size:22px;color:#ccc">🔒</span><div><div style="font-size:13px;color:#aaa">Consultora por revelar</div><div style="font-size:11px;color:#bbb;margin-top:2px">Clase: '+formatDate(item.fecha)+'</div></div></div><span class="badge badge-locked">Bloqueada</span></div></div>';
     }
-    var linkHTML='<div class="members-wrap"><a class="grp-link" href="consultoras.html#'+slug(item.consultora)+'">Ver integrantes de '+item.consultora+' →</a></div>';
+    var g=grupoDe(item);
+    var linkHTML=g?'<div class="members-wrap"><a class="grp-link" href="consultoras.html#'+g.id+'">Ver integrantes de '+g.nombre+' →</a></div>':'';
     return '<div class="card'+(current?' current':'')+'"><div class="card-top"><span class="card-num">'+item.slot+'</span><div class="card-main">'+(current?'<div class="current-badge">⭐ Estadía en curso</div>':'')+
       '<div class="card-episode">'+item.ep+'</div>'+unidadHTML(item)+
-      '<div class="card-name">'+item.consultora+'</div>'+
+      '<div class="card-name">'+nombreGrupo(item)+'</div>'+
       '<div class="card-date">📅 '+formatDate(item.fecha)+'</div>'+
       '</div>'+badgeHTML(e,item.nota)+'</div>'+linkHTML+'</div>';
   }).join('');

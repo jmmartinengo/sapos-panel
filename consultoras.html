@@ -71,47 +71,10 @@ body{font-family:Arial,sans-serif;background:#f5f5f5;color:#222;padding:1.5rem}
 
 <div class="cards" id="cards"></div>
 
+<script src="consultoras.js"></script>
 <script>
-/* ============================================================
-   CONSULTORAS DE LA COMISIÓN 1
-   Única fuente de los grupos: lo que cargues acá es lo que ven.
-
-   Para cargar una consultora, poné una línea por estudiante
-   dentro de su members:
-
-     {nombre:"Consultora Buendía", members:[
-       {n:"Perez, Ana"},
-       {n:"Gomez, Luis"}
-     ]},
-
-   Los nombres de las consultoras son editables: cambiá el texto
-   de "nombre" y listo. A propósito NO llevan número, así saber
-   en qué grupo estás no revela qué semana te toca exponer.
-   Eso lo controlás vos desde el panel de estadías.
-
-   Son 51 estudiantes: nueve consultoras de 5 y una de 6.
-   ============================================================ */
-var CONSULTORAS = [
-  {nombre:"Consultora Buendía",   members:[]},
-  {nombre:"Consultora Úrsula",    members:[]},
-  {nombre:"Consultora Melquíades",members:[]},
-  {nombre:"Consultora Aureliano", members:[]},
-  {nombre:"Consultora Remedios",  members:[]},
-  {nombre:"Consultora Amaranta",  members:[]},
-  {nombre:"Consultora Arcadio",   members:[]},
-  {nombre:"Consultora Fernanda",  members:[]},
-  {nombre:"Consultora Pilar",     members:[]},
-  {nombre:"Consultora Petra",     members:[]}
-];
-
 /* De acá para abajo no hace falta tocar nada. */
 
-function slug(s){
-  return s.toLowerCase()
-    .replace(/á/g,'a').replace(/é/g,'e').replace(/í/g,'i')
-    .replace(/ó/g,'o').replace(/ú/g,'u').replace(/ñ/g,'n')
-    .replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
-}
 
 function esc(s){
   return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
@@ -147,7 +110,7 @@ function render(){
       cuerpo='<div class="members-wrap"><div class="grp-empty">Integrantes por cargar</div></div>';
     }
     var cuenta=g.members.length?(g.members.length===1?'1 integrante':g.members.length+' integrantes'):'sin cargar';
-    return '<div class="card" id="'+slug(g.nombre)+'">'+
+    return '<div class="card" id="'+g.id+'">'+
       '<div class="grp-name">'+marcar(g.nombre,q)+'</div>'+
       '<div class="grp-count">'+cuenta+'</div>'+
       cuerpo+'</div>';
