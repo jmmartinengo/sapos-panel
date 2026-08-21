@@ -48,13 +48,20 @@ body{font-family:Arial,sans-serif;background:#f5f5f5;color:#222;padding:1.5rem}
 .nav a:hover{border-color:#2E6B14;background:#f4f9f1}
 .grp-link{font-size:12px;color:#2E6B14;text-decoration:none;font-weight:600}
 .grp-link:hover{text-decoration:underline}
-.sticky-bar{position:sticky;top:0;z-index:20;background:#f5f5f5;margin:0 -1.5rem 1.2rem;padding:.7rem 1.5rem .1rem;border-bottom:1px solid #e3e3e3}
-.sticky-title{font-size:12px;font-weight:700;color:#1E3A0F;text-align:center;margin-bottom:.5rem;letter-spacing:.02em}
-.sticky-bar .search-wrap{margin-bottom:.6rem}
+.topbar{position:sticky;top:0;z-index:20;background:#f5f5f5;margin:0 -1.5rem;padding:0 1.5rem}
+.topbar .hdr{transition:padding .12s ease}
+.topbar .search-wrap{margin-bottom:.7rem}
+.topbar.compact{padding-top:.5rem;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+.topbar.compact .hdr{padding:.5rem .9rem;margin-bottom:.6rem}
+.topbar.compact .hdr-agency{margin-bottom:.1rem}
+.topbar.compact .hdr-title{font-size:15px;margin-bottom:0}
+.topbar.compact .hdr-tagline,.topbar.compact .hdr-sub,.topbar.compact .nav{display:none}
 </style>
 </head>
 <body>
 
+<div id="tb-sentinel"></div>
+<div class="topbar" id="topbar">
 <div class="hdr">
   <div class="hdr-agency">Agencia SAPOS – FTA</div>
   <div class="hdr-title">Panel de Estadías en La Pachequense</div>
@@ -64,8 +71,6 @@ body{font-family:Arial,sans-serif;background:#f5f5f5;color:#222;padding:1.5rem}
 
 <div class="nav"><a href="consultoras-c2.html">👥 Ver consultoras e integrantes</a></div>
 
-<div class="sticky-bar">
-  <div class="sticky-title">Panel de Estadías · Comisión 2</div>
   <div class="search-wrap">
     <span class="search-icon">🔍</span>
     <input type="text" id="buscar" placeholder="Buscar consultora..." oninput="render()">
@@ -196,6 +201,15 @@ function render(){
 }
 
 render();
+</script>
+<script>
+(function(){
+  var tb=document.getElementById("topbar"), s=document.getElementById("tb-sentinel");
+  if(!tb||!s||!("IntersectionObserver" in window)) return;
+  new IntersectionObserver(function(e){
+    tb.classList.toggle("compact", !e[0].isIntersecting);
+  }).observe(s);
+})();
 </script>
 </body>
 </html>
