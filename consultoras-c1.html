@@ -140,15 +140,13 @@ render();
 (function(){
   var tb=document.getElementById("topbar");
   if(!tb) return;
-  var pedido=false;
   function aplicar(){
-    pedido=false;
-    var y=window.pageYOffset||document.documentElement.scrollTop||0;
+    var y=window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop||0;
     if(y>40){ tb.classList.add("compact"); } else { tb.classList.remove("compact"); }
   }
-  function alScrollear(){ if(!pedido){ pedido=true; window.requestAnimationFrame(aplicar); } }
-  window.addEventListener("scroll", alScrollear, {passive:true});
-  window.addEventListener("resize", alScrollear, {passive:true});
+  window.addEventListener("scroll", aplicar, {passive:true});
+  window.addEventListener("resize", aplicar, {passive:true});
+  document.addEventListener("scroll", aplicar, {passive:true});
   aplicar();
 
   var btn=document.getElementById("btn-buscar"), inp=document.getElementById("buscar");
