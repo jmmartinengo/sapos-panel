@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAPOS FTA — Consultoras Comisión 2</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#f5f5f5;color:#222;padding:1.5rem}
+.hdr{text-align:center;background:#1E3A0F;color:#fff;padding:1.2rem 1.5rem;border-radius:12px;margin-bottom:1.5rem}
+.hdr-agency{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7DC95E;margin-bottom:.3rem}
+.hdr-title{font-size:22px;font-weight:700;margin-bottom:.2rem}
+.hdr-tagline{font-size:11px;color:#9ABF88;margin-bottom:.1rem}
+.hdr-sub{font-size:13px;color:#9ABF88}
+.search-wrap{position:relative;margin-bottom:1.2rem;max-width:420px;margin-left:auto;margin-right:auto}
+.search-wrap input{width:100%;padding:9px 14px 9px 38px;border:1.5px solid #ddd;border-radius:8px;font-size:14px;font-family:Arial,sans-serif;background:#fff}
+.search-wrap input:focus{outline:none;border-color:#2E6B14}
+.search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#aaa;font-size:16px}
+.cards{display:flex;flex-direction:column;gap:10px}
+.card{background:#fff;border:1.5px solid #e0e0e0;border-radius:12px;padding:1rem 1.2rem;transition:border-color .15s}
+.card:hover{border-color:#2E6B14}
+.card.current{border-color:#1E3A0F;border-width:2px}
+.card.locked{opacity:.7;background:#fafafa}
+.card.reservado{opacity:.6;background:#fafafa;border-style:dashed}
+.card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:.7rem}
+.card-num{font-size:12px;color:#999;min-width:30px;padding-top:2px}
+.card-main{flex:1}
+.card-episode{font-size:11px;color:#2E6B14;font-weight:600;margin-bottom:.15rem;text-transform:uppercase;letter-spacing:.05em}
+.card-unidad{font-size:11px;color:#999;margin-bottom:.2rem}
+.card-name{font-size:15px;font-weight:700;color:#1a1a1a;margin-bottom:.1rem}
+.card-date{font-size:12px;color:#777}
+.badge{font-size:11px;font-weight:600;padding:3px 10px;border-radius:5px;white-space:nowrap;flex-shrink:0}
+.badge-done{background:#E8F5E9;color:#2E7D32}
+.badge-current{background:#E3F2FD;color:#1565C0}
+.badge-late{background:#FFEBEE;color:#C62828}
+.badge-pending{background:#F5F5F5;color:#757575;border:1px solid #ddd}
+.badge-locked{background:#F5F5F5;color:#BDBDBD;border:1px solid #e0e0e0}
+.badge-reservado{background:#FFF8E1;color:#F57F17;border:1px solid #FFE082}
+.badge-tp{background:#FFF3E0;color:#E65100;border:1px solid #FFB74D}
+.members-wrap{border-top:1px solid #f0f0f0;padding-top:.65rem;margin-top:.5rem}
+.members-title{font-size:11px;color:#999;margin-bottom:.4rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+.member{display:flex;align-items:center;gap:8px;padding:3px 0}
+.member-name{font-size:12px;color:#333}
+.card-tp{background:#FFF3E0;border-color:#FFB74D}
+.current-badge{font-size:11px;font-weight:600;color:#1565C0;margin-bottom:.3rem}
+.no-results{text-align:center;padding:2rem;color:#aaa;font-size:14px}
+.nav{text-align:center;margin-bottom:1.2rem}
+.nav a{display:inline-block;font-size:12px;color:#2E6B14;text-decoration:none;border:1.5px solid #cfe3c4;background:#fff;padding:7px 16px;border-radius:8px}
+.nav a:hover{border-color:#2E6B14;background:#f4f9f1}
+.grp-name{font-size:15px;font-weight:700;color:#1E3A0F;margin-bottom:.1rem}
+.grp-count{font-size:11px;color:#999;margin-bottom:.2rem}
+.grp-empty{font-size:12px;color:#bbb;font-style:italic;padding:3px 0}
+.hit{background:#FFF3C4;border-radius:3px;padding:0 2px}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="hdr-agency">Agencia SAPOS – FTA</div>
+  <div class="hdr-title">Consultoras y sus integrantes</div>
+  <div class="hdr-tagline">Servicios de Automatización Profesional y Optimización de Sistemas</div>
+  <div class="hdr-sub">Tecnicatura Universitaria en Hotelería · Comisión 2 (martes) · Ciclo 2026</div>
+</div>
+
+<div class="nav"><a href="index.html">← Volver al panel de estadías</a></div>
+
+<div class="search-wrap">
+  <span class="search-icon">🔍</span>
+  <input type="text" id="buscar" placeholder="Buscá tu apellido para ver tu consultora..." oninput="render()">
+</div>
+
+<div class="cards" id="cards"></div>
+
+<script src="consultoras-c2.js"></script>
+<script>
+/* De acá para abajo no hace falta tocar nada. */
+
+
+function esc(s){
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function marcar(texto,q){
+  var t=esc(texto);
+  if(!q) return t;
+  var i=texto.toLowerCase().indexOf(q);
+  if(i<0) return t;
+  return esc(texto.slice(0,i))+'<span class="hit">'+esc(texto.slice(i,i+q.length))+'</span>'+esc(texto.slice(i+q.length));
+}
+
+function render(){
+  var q=(document.getElementById('buscar').value||'').toLowerCase().trim();
+  var c=document.getElementById('cards');
+  var list=CONSULTORAS;
+  if(q){
+    list=list.filter(function(g){
+      if(g.nombre.toLowerCase().indexOf(q)>=0) return true;
+      return g.members.some(function(m){return m.n.toLowerCase().indexOf(q)>=0;});
+    });
+  }
+  if(!list.length){c.innerHTML='<div class="no-results">Sin resultados para "'+esc(q)+'"</div>';return;}
+  c.innerHTML=list.map(function(g){
+    var cuerpo;
+    if(g.members.length){
+      cuerpo='<div class="members-wrap"><div class="members-title">Integrantes</div>'+
+        g.members.map(function(m){
+          return '<div class="member"><div class="member-name">'+marcar(m.n,q)+'</div></div>';
+        }).join('')+'</div>';
+    } else {
+      cuerpo='<div class="members-wrap"><div class="grp-empty">Integrantes por cargar</div></div>';
+    }
+    var cuenta=g.members.length?(g.members.length===1?'1 integrante':g.members.length+' integrantes'):'sin cargar';
+    return '<div class="card" id="'+g.id+'">'+
+      '<div class="grp-name">'+marcar(g.nombre,q)+'</div>'+
+      '<div class="grp-count">'+cuenta+'</div>'+
+      cuerpo+'</div>';
+  }).join('');
+}
+
+render();
+</script>
+</body>
+</html>
