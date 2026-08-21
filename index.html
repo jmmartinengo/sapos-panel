@@ -48,7 +48,6 @@ body{font-family:Arial,sans-serif;background:#f5f5f5;color:#222;padding:1.5rem}
 .nav a:hover{border-color:#2E6B14;background:#f4f9f1}
 .grp-link{font-size:12px;color:#2E6B14;text-decoration:none;font-weight:600}
 .grp-link:hover{text-decoration:underline}
-#tb-sentinel{height:1px}
 .topbar{position:sticky;top:0;z-index:20;background:#f5f5f5;margin:0 -1.5rem;padding:0 1.5rem}
 .topbar .hdr{transition:padding .12s ease}
 .topbar .search-wrap{margin-bottom:.7rem}
@@ -57,13 +56,20 @@ body{font-family:Arial,sans-serif;background:#f5f5f5;color:#222;padding:1.5rem}
 .topbar.compact .hdr-agency{margin-bottom:.1rem}
 .topbar.compact .hdr-title{font-size:15px;margin-bottom:0}
 .topbar.compact .hdr-tagline,.topbar.compact .hdr-sub,.topbar.compact .nav{display:none}
+.hdr{position:relative}
+.search-toggle{position:absolute;top:9px;right:10px;width:32px;height:32px;border:0;border-radius:8px;background:rgba(255,255,255,.14);color:#fff;font-size:15px;line-height:1;cursor:pointer;padding:0;font-family:Arial,sans-serif}
+.search-toggle:hover{background:rgba(255,255,255,.26)}
+.topbar.compact .search-toggle{top:6px;right:8px;width:28px;height:28px;font-size:14px}
+.search-wrap{display:none}
+.topbar.search-open .search-wrap{display:block}
+.search-wrap input{padding-left:14px}
 </style>
 </head>
 <body>
 
-<div id="tb-sentinel"></div>
 <div class="topbar" id="topbar">
 <div class="hdr">
+  <button class="search-toggle" id="btn-buscar" type="button" aria-label="Buscar" aria-expanded="false">🔍</button>
   <div class="hdr-agency">Agencia SAPOS – FTA</div>
   <div class="hdr-title">Panel de Estadías en La Pachequense</div>
   <div class="hdr-tagline">Servicios de Automatización Profesional y Optimización de Sistemas</div>
@@ -73,8 +79,7 @@ body{font-family:Arial,sans-serif;background:#f5f5f5;color:#222;padding:1.5rem}
 <div class="nav"><a href="consultoras-c2.html">👥 Ver consultoras e integrantes</a></div>
 
   <div class="search-wrap">
-    <span class="search-icon">🔍</span>
-    <input type="text" id="buscar" placeholder="Buscar consultora..." oninput="render()">
+      <input type="text" id="buscar" placeholder="Buscar consultora..." oninput="render()">
   </div>
 </div>
 
@@ -205,11 +210,28 @@ render();
 </script>
 <script>
 (function(){
-  var tb=document.getElementById("topbar"), s=document.getElementById("tb-sentinel");
-  if(!tb||!s||!("IntersectionObserver" in window)) return;
-  new IntersectionObserver(function(e){
-    tb.classList.toggle("compact", !e[0].isIntersecting);
-  }).observe(s);
+  var tb=document.getElementById("topbar");
+  if(!tb) return;
+  var pedido=false;
+  function aplicar(){
+    pedido=false;
+    var y=window.pageYOffset||document.documentElement.scrollTop||0;
+    if(y>40){ tb.classList.add("compact"); } else { tb.classList.remove("compact"); }
+  }
+  function alScrollear(){ if(!pedido){ pedido=true; window.requestAnimationFrame(aplicar); } }
+  window.addEventListener("scroll", alScrollear, {passive:true});
+  window.addEventListener("resize", alScrollear, {passive:true});
+  aplicar();
+
+  var btn=document.getElementById("btn-buscar"), inp=document.getElementById("buscar");
+  if(!btn||!inp) return;
+  function abrir(){ tb.classList.add("search-open"); btn.setAttribute("aria-expanded","true"); inp.focus(); }
+  function cerrar(){
+    tb.classList.remove("search-open"); btn.setAttribute("aria-expanded","false");
+    if(inp.value){ inp.value=""; if(typeof render==="function") render(); }
+  }
+  btn.addEventListener("click", function(){ if(tb.classList.contains("search-open")) cerrar(); else abrir(); });
+  inp.addEventListener("keydown", function(e){ if(e.key==="Escape"||e.keyCode===27) cerrar(); });
 })();
 </script>
 </body>
