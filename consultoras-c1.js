@@ -14,11 +14,14 @@
    - "members" lleva una línea por estudiante:
          {n:"Apellido, Nombre"},
 
-   Estado: 38 estudiantes cargados, los que respondieron el
-   formulario diagnóstico. Las consultoras I y J quedan vacías
-   a propósito, esperando a quienes todavía no respondieron.
+   Estado al 3/9/2026: 8 consultoras en uso (A a H) con los 38
+   estudiantes que respondieron el formulario diagnóstico.
    La H tiene 3 y está abierta: si se incorpora alguien con PC,
    va ahí prioritariamente para cubrir ese déficit.
+
+   La I y la J quedan reservadas por si aparecen más grupos.
+   Mientras tengan members:[] vacío NO se muestran en la web;
+   basta agregarles integrantes para que aparezcan solas.
    ============================================================ */
 var CONSULTORAS = [
   {id:"ga", nombre:"Consultora A", members:[

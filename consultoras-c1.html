@@ -108,14 +108,18 @@ function marcar(texto,q){
 function render(){
   var q=(document.getElementById('buscar').value||'').toLowerCase().trim();
   var c=document.getElementById('cards');
-  var list=CONSULTORAS;
+  var list=CONSULTORAS.filter(function(g){return g.members.length>0;});
   if(q){
     list=list.filter(function(g){
       if(g.nombre.toLowerCase().indexOf(q)>=0) return true;
       return g.members.some(function(m){return m.n.toLowerCase().indexOf(q)>=0;});
     });
   }
-  if(!list.length){c.innerHTML='<div class="no-results">Sin resultados para "'+esc(q)+'"</div>';return;}
+  if(!list.length){
+    c.innerHTML=q? '<div class="no-results">Sin resultados para "'+esc(q)+'"</div>'
+                 : '<div class="no-results">Todavía no hay consultoras cargadas.</div>';
+    return;
+  }
   c.innerHTML=list.map(function(g){
     var cuerpo;
     if(g.members.length){
