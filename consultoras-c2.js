@@ -49,6 +49,7 @@ var CONSULTORAS = [
     {n:"Sanchez, Florencia Belen"},
     {n:"Pruyas, Agustina"},
     {n:"Reynoso, Agustina M. Oriana"},
+    {n:"Perlata, Malena Alejandra"},
     
   ]},
   {id:"gf", nombre:"Consultora F", members:[
