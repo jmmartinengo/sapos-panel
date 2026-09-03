@@ -131,7 +131,7 @@ var PANEL = {
 
 var data = [
   {slot:"INTRO", fecha:"2026-08-24", ep:"El Piloto de la Serie: Bienvenidos a Monte Macondo", unidad:"", nota:"Clase suspendida", grupo:""},
-  {slot:"DEMO",  fecha:"2026-08-31", ep:"T1E1: SOPs del Barro 🐸", unidad:"Unidad 1: Drive y Docs", nota:"1° Clase de Demostración", grupo:""},
+  {slot:"DEMO",  fecha:"2026-08-31", ep:"", unidad:"", nota:"1° Clase de Demostración", grupo:""},
 
   {slot:1,  fecha:"2026-09-07", ep:"T1E1: SOPs del Barro 🐸", unidad:"Unidad 1: Drive y Docs", grupo:"gd"},
   {slot:2,  fecha:"2026-09-14", ep:"T1E2: La Agenda de un Loco", unidad:"Unidad 2: Calendar", grupo:""},
@@ -198,7 +198,7 @@ function render(){
     var current=isCurrent(item);
     if(e==='especial'){
       return '<div class="card card-tp'+(current?' current':'')+'"><div class="card-top"><span class="card-num">📌</span><div class="card-main">'+(current?'<div class="current-badge">⭐ Clase en curso</div>':'')+
-        '<div class="card-name">'+item.ep+'</div>'+unidadHTML(item)+
+        (item.ep?'<div class="card-name">'+item.ep+'</div>':'')+unidadHTML(item)+
         '<div class="card-date">📅 '+formatDate(item.fecha)+'</div>'+
         '</div>'+badgeHTML(e,item.nota)+'</div></div>';
     }
