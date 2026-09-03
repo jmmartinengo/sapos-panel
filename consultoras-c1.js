@@ -14,23 +14,67 @@
    - "members" lleva una línea por estudiante:
          {n:"Apellido, Nombre"},
 
-   Ejemplo de un grupo cargado:
-       {id:"ga", nombre:"Los Melquíades", members:[
-         {n:"Perez, Ana"},
-         {n:"Gomez, Luis"}
-       ]},
-
-   Son 51 estudiantes: nueve consultoras de 5 y una de 6.
+   Estado: 38 estudiantes cargados, los que respondieron el
+   formulario diagnóstico. Las consultoras I y J quedan vacías
+   a propósito, esperando a quienes todavía no respondieron.
+   La H tiene 3 y está abierta: si se incorpora alguien con PC,
+   va ahí prioritariamente para cubrir ese déficit.
    ============================================================ */
 var CONSULTORAS = [
-  {id:"ga",  nombre:"Consultora A",    members:[]},
-  {id:"gb",  nombre:"Consultora B",     members:[]},
-  {id:"gc",  nombre:"Consultora C", members:[]},
-  {id:"gd",  nombre:"Consultora D",  members:[]},
-  {id:"ge",  nombre:"Consultora E",   members:[]},
-  {id:"gf",  nombre:"Consultora F",   members:[]},
-  {id:"gg",  nombre:"Consultora G",    members:[]},
-  {id:"gh",  nombre:"Consultora H",   members:[]},
-  {id:"gi",  nombre:"Consultora I",      members:[]},
-  {id:"gj", nombre:"Consultora J",      members:[]}
+  {id:"ga", nombre:"Consultora A", members:[
+    {n:"Delgado, Esteban Lautaro"},
+    {n:"Alasino, Pablo"},
+    {n:"Campoli, Agustin"},
+    {n:"Jufresa, Francisco"},
+    {n:"Lázaro, Camila"}
+  ]},
+  {id:"gb", nombre:"Consultora B", members:[
+    {n:"Gigena, Ariana"},
+    {n:"Sattler, Hanna"},
+    {n:"Ibarra, Tiara Yazmin"},
+    {n:"Marinaro, Sol"},
+    {n:"Cupper, Tihara"}
+  ]},
+  {id:"gc", nombre:"Consultora C", members:[
+    {n:"Guerrero Gianini, Juan Pablo"},
+    {n:"Trujillo Pérez, María Constanza"},
+    {n:"De Los Santos, Lucía"},
+    {n:"Ibañez, Kiara"},
+    {n:"Andrada, Ivana Evelin"}
+  ]},
+  {id:"gd", nombre:"Consultora D", members:[
+    {n:"Gonzalez Aballay, Melani Belen"},
+    {n:"Cacciamano Morales, Rosina"},
+    {n:"Gimenez, Luana Zamira"},
+    {n:"Cadena, Gabriel"},
+    {n:"Perez, Marysol"}
+  ]},
+  {id:"ge", nombre:"Consultora E", members:[
+    {n:"Sosa, Rocío"},
+    {n:"Fonseca Caravello, Azul"},
+    {n:"Roberts Conesa, Simona"},
+    {n:"Tuntis, Simon"},
+    {n:"Norte, Ignacio Salvador"}
+  ]},
+  {id:"gf", nombre:"Consultora F", members:[
+    {n:"Castro, Melani"},
+    {n:"Zapata, Malena Soledad"},
+    {n:"Carreño, Sofia Abigail"},
+    {n:"Gonzalez, Martina"},
+    {n:"Herrera, Venus"}
+  ]},
+  {id:"gg", nombre:"Consultora G", members:[
+    {n:"Sanchez, Zahira Delfina"},
+    {n:"Barreto, Tania"},
+    {n:"Sosa, Selene Abigail"},
+    {n:"Roca, Maxima"},
+    {n:"Loyola, Martina"}
+  ]},
+  {id:"gh", nombre:"Consultora H", members:[
+    {n:"Perez Vasquez, Melany Fabiola"},
+    {n:"Diaz Hernandez, Antonella Yanina"},
+    {n:"Garay, Laura"}
+  ]},
+  {id:"gi", nombre:"Consultora I", members:[]},
+  {id:"gj", nombre:"Consultora J", members:[]}
 ];
