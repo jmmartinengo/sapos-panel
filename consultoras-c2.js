@@ -49,7 +49,7 @@ var CONSULTORAS = [
     {n:"Sanchez, Florencia Belen"},
     {n:"Pruyas, Agustina"},
     {n:"Reynoso, Agustina M. Oriana"},
-    {n:"Sanchez, Milagros"}
+    
   ]},
   {id:"gf", nombre:"Consultora F", members:[
     {n:"Villa, Micaela"},
