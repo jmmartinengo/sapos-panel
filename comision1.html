@@ -64,6 +64,10 @@ body{font-family:Arial,sans-serif;background:#f5f5f5;color:#222;padding:1.5rem}
 .search-wrap{display:none}
 .topbar.search-open .search-wrap{display:block}
 .search-wrap input{padding-left:14px}
+.nav a.cta{font-size:15px;font-weight:700;color:#fff;background:#2E6B14;border:0;padding:13px 24px;border-radius:10px;box-shadow:0 3px 10px rgba(46,107,20,.30);animation:latir 2.2s ease-in-out infinite;transform-origin:center}
+.nav a.cta:hover{background:#3A8419;animation-play-state:paused;transform:scale(1.05)}
+@keyframes latir{0%,100%{transform:scale(1);box-shadow:0 3px 10px rgba(46,107,20,.30)}50%{transform:scale(1.05);box-shadow:0 6px 20px rgba(46,107,20,.48)}}
+@media (prefers-reduced-motion:reduce){.nav a.cta{animation:none}}
 </style>
 </head>
 <body>
@@ -77,7 +81,7 @@ body{font-family:Arial,sans-serif;background:#f5f5f5;color:#222;padding:1.5rem}
   <div class="hdr-sub">Tecnicatura Universitaria en Hotelería · Comisión 1 (lunes) · Ciclo 2026</div>
 </div>
 
-<div class="nav"><a href="consultoras-c1.html">👥 Ver consultoras e integrantes</a></div>
+<div class="nav"><a class="cta" href="consultoras-c1.html">👥 Ver consultoras e integrantes</a></div>
 
   <div class="search-wrap">
       <input type="text" id="buscar" placeholder="Buscar consultora..." oninput="render()">
