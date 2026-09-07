@@ -42,8 +42,7 @@ var CONSULTORAS = [
     {n:"Guerrero Gianini, Juan Pablo"},
     {n:"Trujillo Pérez, María Constanza"},
     {n:"De Los Santos, Lucía"},
-    {n:"Ibañez, Kiara"},
-    {n:"Andrada, Ivana Evelin"}
+    {n:"Ibañez, Kiara"}
   ]},
   {id:"gd", nombre:"Consultora D", members:[
     {n:"Gonzalez Aballay, Melani Belen"},
