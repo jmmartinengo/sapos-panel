@@ -77,6 +77,8 @@ var CONSULTORAS = [
     {n:"Perez Vasquez, Melany Fabiola"},
     {n:"Diaz Hernandez, Antonella Yanina"},
     {n:"Garay, Laura"}
+    {n:"Ludueña, Mercedes"}
+    {n:"Andrada, Ivana Evelin"}
   ]},
   {id:"gi", nombre:"Consultora I", members:[]},
   {id:"gj", nombre:"Consultora J", members:[]}
