@@ -105,9 +105,9 @@ body{font-family:Arial,sans-serif;background:#f5f5f5;color:#222;padding:1.5rem}
               ("tp" y "reservado" son fijos, no los toques)
    ============================================================ */
 var PANEL = {
-  1:    {revelado:false,  current:false,  estado:"pendiente"},
-  2:    {revelado:false, current:false, estado:"pendiente"},
-  3:    {revelado:false, current:false, estado:"pendiente"},
+  1:    {revelado:false, current:false, estado:"tp"},
+  2:    {revelado:false, current:false, estado:"tp"},
+  3:    {revelado:true, current:true, estado:"pendiente"},
   4:    {revelado:false, current:false, estado:"pendiente"},
   5:    {revelado:false, current:false, estado:"pendiente"},
   6:    {revelado:false, current:false, estado:"pendiente"},
@@ -135,9 +135,9 @@ var PANEL = {
    ------------------------------------------------------------ */
 
 var data = [
-  {slot:1, fecha:"2026-09-01", ep:"T1E1: SOPs del Barro", grupo:""},
-  {slot:2, fecha:"2026-09-08", ep:"T1E2: La Agenda de un Loco", grupo:""},
-  {slot:3, fecha:"2026-09-15", ep:"T1E3: SUMA y Sigue", grupo:""},
+  {slot:1, fecha:"2026-09-01", ep:"T1E1: SOPs del Barro", nota:"Clase sin presentación", grupo:""},
+  {slot:2, fecha:"2026-09-08", ep:"T1E2: La Agenda de un Loco", nota:"Clase sin presentación", grupo:""},
+  {slot:3, fecha:"2026-09-15", ep:"T1E3: SUMA y Sigue", grupo:"ge"},
   {slot:4, fecha:"2026-09-22", ep:"T1E4: Se BUSCARV al Culpable", grupo:""},
   {slot:"TP", fecha:"2026-09-29", ep:"EXAMEN PRÁCTICO", grupo:""},
   {slot:5, fecha:"2026-10-06", ep:"T1E5: Guardar las FORMas", grupo:""},
@@ -174,8 +174,8 @@ function formatDate(s){
 }
 
 
-function badgeHTML(estado){
-  if(estado==='tp') return '<span class="badge badge-tp">Sin exposición</span>';
+function badgeHTML(estado,nota){
+  if(estado==='tp') return '<span class="badge badge-tp">'+(nota||'Sin exposición')+'</span>';
   if(estado==='reservado') return '<span class="badge badge-reservado">Reservado</span>';
   var map={realizada:'badge-done',retrasada:'badge-late',pendiente:'badge-pending'};
   var lab={realizada:'Realizada',retrasada:'Retrasada',pendiente:'Pendiente'};
@@ -198,7 +198,7 @@ function render(){
   c.innerHTML=list.map(function(item){
     var e=estadoDe(item);
     if(e==='tp'){
-      return '<div class="card card-tp"><div class="card-top"><span class="card-num">TP</span><div class="card-main"><div class="card-name">'+item.ep+'</div><div class="card-date">📅 '+formatDate(item.fecha)+'</div></div>'+badgeHTML(e)+'</div></div>';
+      return '<div class="card card-tp"><div class="card-top"><span class="card-num">TP</span><div class="card-main"><div class="card-name">'+item.ep+'</div><div class="card-date">📅 '+formatDate(item.fecha)+'</div></div>'+badgeHTML(e,item.nota)+'</div></div>';
     }
     if(e==='reservado'){
       return '<div class="card reservado"><div class="card-top"><span class="card-num">📋</span><div class="card-main"><div class="card-name">Slot reservado</div><div class="card-date">📅 '+formatDate(item.fecha)+' · Para estudiantes que se incorporen</div></div>'+badgeHTML(e)+'</div></div>';
