@@ -93,6 +93,11 @@ body{font-family:Arial,sans-serif;background:#f5f5f5;color:#222;padding:1.5rem}
 /* De acá para abajo no hace falta tocar nada. */
 
 
+function norm(s){
+  return String(s).toLowerCase()
+    .replace(/[áàâä]/g,'a').replace(/[éèêë]/g,'e').replace(/[íìîï]/g,'i')
+    .replace(/[óòôö]/g,'o').replace(/[úùûü]/g,'u').replace(/ñ/g,'n');
+}
 function esc(s){
   return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 }
@@ -100,23 +105,24 @@ function esc(s){
 function marcar(texto,q){
   var t=esc(texto);
   if(!q) return t;
-  var i=texto.toLowerCase().indexOf(q);
+  var i=norm(texto).indexOf(q);
   if(i<0) return t;
   return esc(texto.slice(0,i))+'<span class="hit">'+esc(texto.slice(i,i+q.length))+'</span>'+esc(texto.slice(i+q.length));
 }
 
 function render(){
-  var q=(document.getElementById('buscar').value||'').toLowerCase().trim();
+  var qRaw=(document.getElementById('buscar').value||'').trim();
+  var q=norm(qRaw);
   var c=document.getElementById('cards');
   var list=CONSULTORAS.filter(function(g){return g.members.length>0;});
   if(q){
     list=list.filter(function(g){
-      if(g.nombre.toLowerCase().indexOf(q)>=0) return true;
-      return g.members.some(function(m){return m.n.toLowerCase().indexOf(q)>=0;});
+      if(norm(g.nombre).indexOf(q)>=0) return true;
+      return g.members.some(function(m){return norm(m.n).indexOf(q)>=0;});
     });
   }
   if(!list.length){
-    c.innerHTML=q? '<div class="no-results">Sin resultados para "'+esc(q)+'"</div>'
+    c.innerHTML=q? '<div class="no-results">Sin resultados para "'+esc(qRaw)+'"</div>'
                  : '<div class="no-results">Todavía no hay consultoras cargadas.</div>';
     return;
   }

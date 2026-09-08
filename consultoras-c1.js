@@ -29,7 +29,8 @@ var CONSULTORAS = [
     {n:"Alasino, Pablo"},
     {n:"Campoli, Agustin"},
     {n:"Jufresa, Francisco"},
-    {n:"Lázaro, Camila"}
+    {n:"Lázaro, Camila"},
+    {n:"Zaya Sangoi, Celeste"}
   ]},
   {id:"gb", nombre:"Consultora B", members:[
     {n:"Gigena, Ariana"},
@@ -56,8 +57,7 @@ var CONSULTORAS = [
     {n:"Fonseca Caravello, Azul"},
     {n:"Roberts Conesa, Simona"},
     {n:"Tuntis, Simon"},
-    {n:"Norte, Ignacio Salvador"},
-    {n:"Zaya Sangoi, Celeste"}
+    {n:"Norte, Ignacio Salvador"}
   ]},
   {id:"gf", nombre:"Consultora F", members:[
     {n:"Castro, Melani"},

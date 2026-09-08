@@ -163,6 +163,11 @@ function grupoDe(item){
 }
 function nombreGrupo(item){var g=grupoDe(item);return g?g.nombre:'(por confirmar)';}
 
+function norm(s){
+  return String(s).toLowerCase()
+    .replace(/[áàâä]/g,'a').replace(/[éèêë]/g,'e').replace(/[íìîï]/g,'i')
+    .replace(/[óòôö]/g,'o').replace(/[úùûü]/g,'u').replace(/ñ/g,'n');
+}
 function cfg(item){return PANEL[item.slot]||{};}
 function isRevealed(item){return cfg(item).revelado===true;}
 function isCurrent(item){return cfg(item).current===true;}
@@ -188,13 +193,13 @@ function unidadHTML(item){
 }
 
 function render(){
-  var q=(document.getElementById('buscar').value||'').toLowerCase().trim();
+  var q=norm((document.getElementById('buscar').value||'').trim());
   var c=document.getElementById('cards');
   var list=data;
   if(q){
     list=list.filter(function(item){
       if(estadoDe(item)==='especial') return false;
-      if(nombreGrupo(item).toLowerCase().includes(q)) return true;
+      if(norm(nombreGrupo(item)).indexOf(q)>=0) return true;
       return false;
     });
   }
