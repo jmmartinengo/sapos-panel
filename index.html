@@ -105,17 +105,18 @@ body{font-family:Arial,sans-serif;background:#f5f5f5;color:#222;padding:1.5rem}
               ("tp" y "reservado" son fijos, no los toques)
    ============================================================ */
 var PANEL = {
-  1:    {revelado:false, current:false, estado:"tp"},
-  2:    {revelado:false, current:false, estado:"tp"},
-  3:    {revelado:true, current:true, estado:"pendiente"},
-  4:    {revelado:false, current:false, estado:"pendiente"},
-  5:    {revelado:false, current:false, estado:"pendiente"},
-  6:    {revelado:false, current:false, estado:"pendiente"},
-  7:    {revelado:false, current:false, estado:"pendiente"},
-  8:    {revelado:false, current:false, estado:"pendiente"},
-  "TP": {revelado:false, current:false, estado:"tp"},
-  "R1": {revelado:false, current:false, estado:"reservado"},
-  "R2": {revelado:false, current:false, estado:"reservado"}
+  "DEMO": {revelado:false, current:false, estado:"tp"},
+  1:      {revelado:true,  current:true,  estado:"pendiente"},
+  2:      {revelado:false, current:false, estado:"pendiente"},
+  3:      {revelado:false, current:false, estado:"pendiente"},
+  "TP":   {revelado:false, current:false, estado:"tp"},
+  4:      {revelado:false, current:false, estado:"pendiente"},
+  5:      {revelado:false, current:false, estado:"pendiente"},
+  6:      {revelado:false, current:false, estado:"pendiente"},
+  7:      {revelado:false, current:false, estado:"pendiente"},
+  8:      {revelado:false, current:false, estado:"pendiente"},
+  "R1":   {revelado:false, current:false, estado:"reservado"},
+  "R2":   {revelado:false, current:false, estado:"reservado"}
 };
 
 /* De acá para abajo no hace falta tocar nada. */
@@ -135,15 +136,20 @@ var PANEL = {
    ------------------------------------------------------------ */
 
 var data = [
-  {slot:1, fecha:"2026-09-01", ep:"T1E1: SOPs del Barro", nota:"Clase sin presentación", grupo:""},
-  {slot:2, fecha:"2026-09-08", ep:"T1E2: La Agenda de un Loco", nota:"Clase sin presentación", grupo:""},
-  {slot:3, fecha:"2026-09-15", ep:"T1E3: SUMA y Sigue", grupo:"ge"},
-  {slot:4, fecha:"2026-09-22", ep:"T1E4: Se BUSCARV al Culpable", grupo:""},
+  {slot:"DEMO", fecha:"2026-09-01", ep:"T1E1: SOPs del Barro", nota:"Demostración a cargo del profesor", grupo:""},
+
+  {slot:1, fecha:"2026-09-08", ep:"T1E2: La Agenda de un Loco", grupo:"ge"},
+  {slot:2, fecha:"2026-09-15", ep:"T1E3: SUMA y Sigue", grupo:"ga"},
+  {slot:3, fecha:"2026-09-22", ep:"T1E4: Se BUSCARV al Culpable", grupo:"gb"},
+
   {slot:"TP", fecha:"2026-09-29", ep:"EXAMEN PRÁCTICO", grupo:""},
-  {slot:5, fecha:"2026-10-06", ep:"T1E5: Guardar las FORMas", grupo:""},
-  {slot:6, fecha:"2026-10-13", ep:"T1E6: ¡Prompt-o Socorro!", grupo:""},
-  {slot:7, fecha:"2026-10-20", ep:"T1E7: Atrayendo Nuevos Aliados", grupo:""},
-  {slot:8, fecha:"2026-10-27", ep:"T1E8+E9: La Gran Migración", grupo:""},
+
+  {slot:4, fecha:"2026-10-06", ep:"T1E5: Guardar las FORMas", grupo:"gc"},
+  {slot:5, fecha:"2026-10-13", ep:"T1E6: ¡Prompt-o Socorro!", grupo:"gd"},
+  {slot:6, fecha:"2026-10-20", ep:"T1E7: Atrayendo Nuevos Aliados", grupo:"gf"},
+  {slot:7, fecha:"2026-10-27", ep:"T1E8+E9: La Gran Migración", grupo:"gg"},
+  {slot:8, fecha:"2026-10-27", ep:"T1E8+E9: La Gran Migración", grupo:"gh"},
+
   {slot:"R1", fecha:"2026-11-03", ep:"Exposición reservada", grupo:""},
   {slot:"R2", fecha:"2026-11-03", ep:"Exposición reservada", grupo:""}
 ];
