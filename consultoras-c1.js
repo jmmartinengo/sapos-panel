@@ -71,7 +71,8 @@ var CONSULTORAS = [
     {n:"Barreto, Tania"},
     {n:"Sosa, Selene Abigail"},
     {n:"Roca, Maxima"},
-    {n:"Loyola, Martina"}
+    {n:"Loyola, Martina"},
+    {n:"Suárez, Jazmín"}
   ]},
   {id:"gh", nombre:"Consultora H", members:[
     {n:"Perez Vasquez, Melany Fabiola"},
