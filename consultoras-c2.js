@@ -57,14 +57,16 @@ var CONSULTORAS = [
     {n:"Lopez, Matias Valentin"},
     {n:"Ferreyra, Rocio Milagros"},
     {n:"Barbero, Luz"},
-    {n:"Cabutto, Delfina"}
+    {n:"Cabutto, Delfina"},
+    {n:"Aguirre, Ayelen Paula"}
   ]},
   {id:"gg", nombre:"Consultora G", members:[
     {n:"Servin, David"},
     {n:"Campañó, Alvaro"},
     {n:"Macias, Abril Narela"},
     {n:"Gutiérrez, Lucia Gutiérrez"},
-    {n:"Ferretjans, Felicitas"}
+    {n:"Ferretjans, Felicitas"},
+    {n:"Cámara, Ana Paula"}
   ]},
   {id:"gh", nombre:"Consultora H", members:[
     {n:"Rosales Vanega, Soledad"},
