@@ -66,6 +66,7 @@ body{font-family:Arial,sans-serif;background:#f5f5f5;color:#222;padding:1.5rem}
 .search-wrap{display:none}
 .topbar.search-open .search-wrap{display:block}
 .search-wrap input{padding-left:14px}
+.grp-ok{display:inline-block;margin-left:8px;font-size:10px;font-weight:700;color:#2E7D32;background:#E8F5E9;border:1px solid #A5D6A7;border-radius:5px;padding:2px 7px;vertical-align:middle;white-space:nowrap}
 </style>
 </head>
 <body>
@@ -89,6 +90,7 @@ body{font-family:Arial,sans-serif;background:#f5f5f5;color:#222;padding:1.5rem}
 <div class="cards" id="cards"></div>
 
 <script src="consultoras-c1.js"></script>
+<script src="panel-c1.js"></script>
 <script>
 /* De acá para abajo no hace falta tocar nada. */
 
@@ -98,6 +100,20 @@ function norm(s){
     .replace(/[áàâä]/g,'a').replace(/[éèêë]/g,'e').replace(/[íìîï]/g,'i')
     .replace(/[óòôö]/g,'o').replace(/[úùûü]/g,'u').replace(/ñ/g,'n');
 }
+/* Busca en el panel si a este grupo ya le tocó y quedó como realizada. */
+function yaPresento(id){
+  if(typeof data==='undefined'||typeof PANEL==='undefined') return false;
+  for(var i=0;i<data.length;i++){
+    if(data[i].grupo!==id) continue;
+    var p=PANEL[data[i].slot]||{};
+    if(p.estado==='realizada') return true;
+  }
+  return false;
+}
+function selloHTML(g){
+  return yaPresento(g.id)? '<span class="grp-ok">✓ Ya presentó</span>' : '';
+}
+
 function esc(s){
   return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 }
@@ -138,7 +154,7 @@ function render(){
     }
     var cuenta=g.members.length?(g.members.length===1?'1 integrante':g.members.length+' integrantes'):'sin cargar';
     return '<div class="card" id="'+g.id+'">'+
-      '<div class="grp-name">'+marcar(g.nombre,q)+'</div>'+
+      '<div class="grp-name">'+marcar(g.nombre,q)+selloHTML(g)+'</div>'+
       '<div class="grp-count">'+cuenta+'</div>'+
       cuerpo+'</div>';
   }).join('');
