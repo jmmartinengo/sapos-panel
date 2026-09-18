@@ -67,6 +67,7 @@ body{font-family:Arial,sans-serif;background:#f5f5f5;color:#222;padding:1.5rem}
 .topbar.search-open .search-wrap{display:block}
 .search-wrap input{padding-left:14px}
 .grp-ok{display:inline-block;margin-left:8px;font-size:10px;font-weight:700;color:#2E7D32;background:#E8F5E9;border:1px solid #A5D6A7;border-radius:5px;padding:2px 7px;vertical-align:middle;white-space:nowrap}
+.grp-now{display:inline-block;margin-left:8px;font-size:10px;font-weight:700;color:#1565C0;background:#E3F2FD;border:1px solid #90CAF9;border-radius:5px;padding:2px 7px;vertical-align:middle;white-space:nowrap}
 </style>
 </head>
 <body>
@@ -101,17 +102,22 @@ function norm(s){
     .replace(/[óòôö]/g,'o').replace(/[úùûü]/g,'u').replace(/ñ/g,'n');
 }
 /* Busca en el panel si a este grupo ya le tocó y quedó como realizada. */
-function yaPresento(id){
-  if(typeof data==='undefined'||typeof PANEL==='undefined') return false;
+function situacion(id){
+  if(typeof data==='undefined'||typeof PANEL==='undefined') return null;
+  var estadia=null;
   for(var i=0;i<data.length;i++){
     if(data[i].grupo!==id) continue;
     var p=PANEL[data[i].slot]||{};
-    if(p.estado==='realizada') return true;
+    if(p.estado==='realizada') return 'presento';
+    if(p.current===true) estadia='estadia';
   }
-  return false;
+  return estadia;
 }
 function selloHTML(g){
-  return yaPresento(g.id)? '<span class="grp-ok">✓ Ya presentó</span>' : '';
+  var s=situacion(g.id);
+  if(s==='presento') return '<span class="grp-ok">✓ Ya presentó</span>';
+  if(s==='estadia') return '<span class="grp-now">● En estadía</span>';
+  return '';
 }
 
 function esc(s){
