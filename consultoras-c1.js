@@ -65,7 +65,8 @@ var CONSULTORAS = [
     {n:"Zapata, Malena Soledad"},
     {n:"Carreño, Sofia Abigail"},
     {n:"Gonzalez, Martina"},
-    {n:"Herrera, Venus"}
+    {n:"Herrera, Venus"},
+    {n:"Siles, Lucia"}
   ]},
   {id:"gg", nombre:"Consultora G", members:[
     {n:"Sanchez, Zahira Delfina"},
