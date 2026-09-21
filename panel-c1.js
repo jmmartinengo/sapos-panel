@@ -13,11 +13,12 @@
 var PANEL = {
   "INTRO": {revelado:false, current:false, estado:"especial"},
   "DEMO":  {revelado:false, current:false, estado:"especial"},
-  1:       {revelado:true, current:false, estado:"retrasada"},
-  2:       {revelado:true, current:false, estado:"realizada"},
-  3:       {revelado:true, current:true, estado:"pendiente"},
-  4:       {revelado:false, current:false, estado:"pendiente"},
+  1:       {revelado:true,  current:false, estado:"retrasada"},
+  2:       {revelado:true,  current:false, estado:"realizada"},
+  "NOLAB": {revelado:false, current:false, estado:"especial"},
+  3:       {revelado:true,  current:true,  estado:"pendiente"},
   "EXPR":  {revelado:false, current:false, estado:"especial"},
+  4:       {revelado:false, current:false, estado:"pendiente"},
   5:       {revelado:false, current:false, estado:"pendiente"},
   6:       {revelado:false, current:false, estado:"pendiente"},
   7:       {revelado:false, current:false, estado:"pendiente"},
@@ -45,14 +46,17 @@ var data = [
 
   {slot:1,  fecha:"2026-09-07", ep:"T1E1: SOPs del Barro 🐸", unidad:"Unidad 1: Drive y Docs", grupo:"gd"},
   {slot:2,  fecha:"2026-09-14", ep:"T1E2: La Agenda de un Loco", unidad:"Unidad 2: Calendar", grupo:"gh"},
-  {slot:3,  fecha:"2026-09-21", ep:"T1E3: SUMA y Sigue", unidad:"Unidad 3: Sheets", grupo:"gc"},
-  {slot:4,  fecha:"2026-09-28", ep:"T1E4: Se BUSCARV al Culpable", unidad:"Unidad 3: Sheets", grupo:""},
+
+  {slot:"NOLAB", fecha:"2026-09-21", ep:"", unidad:"", nota:"Día no laborable", grupo:""},
+
+  {slot:3,  fecha:"2026-09-28", ep:"T1E3: SUMA y Sigue", unidad:"Unidad 3: Sheets", grupo:"gc"},
 
   {slot:"EXPR",  fecha:"2026-10-05", ep:"EXAMEN PRÁCTICO", unidad:"", nota:"Examen Práctico", grupo:""},
 
-  {slot:5,  fecha:"2026-10-12", ep:"T1E5: Guardar las FORMas", unidad:"Unidad 4: Forms", grupo:""},
-  {slot:6,  fecha:"2026-10-19", ep:"T1E6: Poniendo a Macondo en el Mapa", unidad:"Unidad 5.1: Maps y MyMaps", grupo:""},
-  {slot:7,  fecha:"2026-10-26", ep:"T1E7: ¡Prompt-o Socorro!", unidad:"Unidad 5.2: AI Generativa", grupo:""},
+  {slot:4,  fecha:"2026-10-12", ep:"T1E4: Se BUSCARV al Culpable", unidad:"Unidad 3: Sheets", grupo:""},
+  {slot:5,  fecha:"2026-10-19", ep:"T1E5: Guardar las FORMas", unidad:"Unidad 4: Forms", grupo:""},
+  {slot:6,  fecha:"2026-10-26", ep:"T1E6: Poniendo a Macondo en el Mapa", unidad:"Unidad 5.1: Maps y MyMaps", grupo:""},
+  {slot:7,  fecha:"2026-11-02", ep:"T1E7: ¡Prompt-o Socorro!", unidad:"Unidad 5.2: AI Generativa", grupo:""},
   {slot:8,  fecha:"2026-11-02", ep:"T1E8: Un Pitch Vale Más que Mil Palabras", unidad:"Unidad 5.3: Slides", grupo:""},
 
   {slot:"PARC",  fecha:"2026-11-09", ep:"PARCIAL", unidad:"", nota:"Examen Parcial", grupo:""},
