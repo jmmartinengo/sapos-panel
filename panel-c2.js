@@ -54,8 +54,9 @@ var data = [
   {slot:"EXPR", fecha:"2026-10-06", modalidad:"Presencial", ep:"EXAMEN PRÁCTICO", unidad:"", nota:"Examen Práctico", grupo:""},
 
   {slot:5, fecha:"2026-10-13", modalidad:"Virtual", ep:"T1E6: ¡Prompt-o Socorro!", unidad:"Unidad 5.1: AI Generativa", grupo:"gg"},
-  {slot:6, fecha:"2026-10-13", modalidad:"Virtual", ep:"T1E6: ¡Prompt-o Socorro!", unidad:"Unidad 5.1: AI Generativa", grupo:"gh"},
-  {slot:7, fecha:"2026-10-20", modalidad:"Virtual", ep:"T1E7: Poniendo a Macondo en el Mapa · T1E8: Atrayendo Nuevos Aliados", unidad:"Unidades 5.2 y 5.3: Maps, MyMaps y Slides", grupo:"gf"},
+
+  {slot:6, fecha:"2026-10-20", modalidad:"Virtual", ep:"T1E7: Poniendo a Macondo en el Mapa", unidad:"Unidad 5.2: Maps y MyMaps", grupo:"gf"},
+  {slot:7, fecha:"2026-10-20", modalidad:"Virtual", ep:"T1E8: Atrayendo Nuevos Aliados", unidad:"Unidad 5.3: Slides", grupo:"gh"},
   {slot:8, fecha:"2026-10-27", modalidad:"Virtual", ep:"T1E9: La Gran Migración (PMS Parte 1)", unidad:"Unidad 6: PMS", grupo:"gd"},
 
   {slot:"PARC", fecha:"2026-11-03", modalidad:"Presencial", ep:"EVALUACIÓN PARCIAL", unidad:"", nota:"Examen Parcial", grupo:""},
