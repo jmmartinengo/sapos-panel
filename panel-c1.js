@@ -15,15 +15,17 @@ var PANEL = {
   "DEMO":  {revelado:false, current:false, estado:"especial"},
   1:       {revelado:true,  current:false, estado:"retrasada"},
   2:       {revelado:true,  current:false, estado:"realizada"},
-  "NOLAB": {revelado:false, current:false, estado:"especial"},
+  "FER1":  {revelado:false, current:false, estado:"especial"},
   3:       {revelado:true,  current:true,  estado:"pendiente"},
   "EXPR":  {revelado:false, current:false, estado:"especial"},
+  "FER2":  {revelado:false, current:false, estado:"especial"},
   4:       {revelado:false, current:false, estado:"pendiente"},
   5:       {revelado:false, current:false, estado:"pendiente"},
   6:       {revelado:false, current:false, estado:"pendiente"},
   7:       {revelado:false, current:false, estado:"pendiente"},
   8:       {revelado:false, current:false, estado:"pendiente"},
   "PARC":  {revelado:false, current:false, estado:"especial"},
+  "FER3":  {revelado:false, current:false, estado:"especial"},
   "RECU":  {revelado:false, current:false, estado:"especial"}
 };
 /* ------------------------------------------------------------
@@ -47,18 +49,21 @@ var data = [
   {slot:1,  fecha:"2026-09-07", ep:"T1E1: SOPs del Barro 🐸", unidad:"Unidad 1: Drive y Docs", grupo:"gd"},
   {slot:2,  fecha:"2026-09-14", ep:"T1E2: La Agenda de un Loco", unidad:"Unidad 2: Calendar", grupo:"gh"},
 
-  {slot:"NOLAB", fecha:"2026-09-21", ep:"", unidad:"", nota:"Día no laborable", grupo:""},
+  {slot:"FER1", fecha:"2026-09-21", ep:"", unidad:"", nota:"Feriado", grupo:""},
 
   {slot:3,  fecha:"2026-09-28", ep:"T1E3: SUMA y Sigue", unidad:"Unidad 3: Sheets", grupo:"gc"},
 
-  {slot:"EXPR",  fecha:"2026-10-05", ep:"EXAMEN PRÁCTICO", unidad:"", nota:"Examen Práctico", grupo:""},
+  {slot:"EXPR", fecha:"2026-10-05", ep:"EXAMEN PRÁCTICO", unidad:"", nota:"Examen Práctico", grupo:""},
+  {slot:"FER2", fecha:"2026-10-12", ep:"", unidad:"", nota:"Feriado", grupo:""},
 
-  {slot:4,  fecha:"2026-10-12", ep:"T1E4: Se BUSCARV al Culpable", unidad:"Unidad 3: Sheets", grupo:""},
-  {slot:5,  fecha:"2026-10-19", ep:"T1E5: Guardar las FORMas", unidad:"Unidad 4: Forms", grupo:""},
-  {slot:6,  fecha:"2026-10-26", ep:"T1E6: Poniendo a Macondo en el Mapa", unidad:"Unidad 5.1: Maps y MyMaps", grupo:""},
-  {slot:7,  fecha:"2026-11-02", ep:"T1E7: ¡Prompt-o Socorro!", unidad:"Unidad 5.2: AI Generativa", grupo:""},
-  {slot:8,  fecha:"2026-11-02", ep:"T1E8: Un Pitch Vale Más que Mil Palabras", unidad:"Unidad 5.3: Slides", grupo:""},
+  {slot:4,  fecha:"2026-10-19", ep:"T1E4: Se BUSCARV al Culpable", unidad:"Unidad 3: Sheets", grupo:"ga"},
+  {slot:5,  fecha:"2026-10-19", ep:"T1E5: Guardar las FORMas", unidad:"Unidad 4: Forms", grupo:"gb"},
+  {slot:6,  fecha:"2026-10-19", ep:"T1E6: Poniendo a Macondo en el Mapa", unidad:"Unidad 5.1: Maps y MyMaps", grupo:"ge"},
 
-  {slot:"PARC",  fecha:"2026-11-09", ep:"PARCIAL", unidad:"", nota:"Examen Parcial", grupo:""},
-  {slot:"RECU",  fecha:"2026-11-16", ep:"RECUPERATORIOS", unidad:"", nota:"Examen Recuperatorio", grupo:""}
+  {slot:7,  fecha:"2026-10-26", ep:"T1E7: ¡Prompt-o Socorro!", unidad:"Unidad 5.2: AI Generativa", grupo:"gf"},
+  {slot:8,  fecha:"2026-10-26", ep:"T1E8: Un Pitch Vale Más que Mil Palabras", unidad:"Unidad 5.3: Slides", grupo:"gg"},
+
+  {slot:"PARC", fecha:"2026-11-02", ep:"EXAMEN PARCIAL", unidad:"", nota:"Examen Parcial", grupo:""},
+  {slot:"FER3", fecha:"2026-11-09", ep:"", unidad:"", nota:"Feriado", grupo:""},
+  {slot:"RECU", fecha:"2026-11-16", ep:"EXAMEN RECUPERATORIO", unidad:"", nota:"Examen Recuperatorio", grupo:""}
 ];
