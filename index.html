@@ -26,6 +26,7 @@ body{font-family:Arial,sans-serif;background:#f5f5f5;color:#222;padding:1.5rem}
 .card-num{font-size:12px;color:#999;min-width:30px;padding-top:2px}
 .card-main{flex:1}
 .card-episode{font-size:11px;color:#2E6B14;font-weight:600;margin-bottom:.15rem;text-transform:uppercase;letter-spacing:.05em}
+.card-unidad{font-size:11px;color:#999;margin-bottom:.2rem}
 .card-name{font-size:15px;font-weight:700;color:#1a1a1a;margin-bottom:.1rem}
 .card-date{font-size:12px;color:#777}
 .badge{font-size:11px;font-weight:600;padding:3px 10px;border-radius:5px;white-space:nowrap;flex-shrink:0}
@@ -121,6 +122,13 @@ function formatDate(s){
 }
 
 
+function unidadHTML(item){
+  return item.unidad? '<div class="card-unidad">'+item.unidad+'</div>' : '';
+}
+function fechaYModo(item){
+  return formatDate(item.fecha)+(item.modalidad? ' · '+item.modalidad : '');
+}
+
 function badgeHTML(estado,nota){
   if(estado==='tp') return '<span class="badge badge-tp">'+(nota||'Sin exposición')+'</span>';
   if(estado==='reservado') return '<span class="badge badge-reservado">Reservado</span>';
@@ -145,21 +153,21 @@ function render(){
   c.innerHTML=list.map(function(item){
     var e=estadoDe(item);
     if(e==='tp'){
-      return '<div class="card card-tp"><div class="card-top"><span class="card-num">TP</span><div class="card-main"><div class="card-name">'+item.ep+'</div><div class="card-date">📅 '+formatDate(item.fecha)+'</div></div>'+badgeHTML(e,item.nota)+'</div></div>';
+      return '<div class="card card-tp"><div class="card-top"><span class="card-num">TP</span><div class="card-main">'+(item.ep?'<div class="card-name">'+item.ep+'</div>':'')+unidadHTML(item)+'<div class="card-date">📅 '+fechaYModo(item)+'</div></div>'+badgeHTML(e,item.nota)+'</div></div>';
     }
     if(e==='reservado'){
       return '<div class="card reservado"><div class="card-top"><span class="card-num">📋</span><div class="card-main"><div class="card-name">Slot reservado</div><div class="card-date">📅 '+formatDate(item.fecha)+' · Para estudiantes que se incorporen</div></div>'+badgeHTML(e)+'</div></div>';
     }
     var current=isCurrent(item);
     if(!isRevealed(item)){
-      return '<div class="card locked"><div class="card-top"><span class="card-num">'+item.slot+'</span><div style="display:flex;align-items:center;gap:10px;flex:1"><span style="font-size:22px;color:#ccc">🔒</span><div><div style="font-size:13px;color:#aaa">Consultora por revelar</div><div style="font-size:11px;color:#bbb;margin-top:2px">Clase: '+formatDate(item.fecha)+'</div></div></div><span class="badge badge-locked">Bloqueada</span></div></div>';
+      return '<div class="card locked"><div class="card-top"><span class="card-num">'+item.slot+'</span><div style="display:flex;align-items:center;gap:10px;flex:1"><span style="font-size:22px;color:#ccc">🔒</span><div><div style="font-size:13px;color:#aaa">Consultora por revelar</div><div style="font-size:11px;color:#bbb;margin-top:2px">Clase: '+fechaYModo(item)+'</div></div></div><span class="badge badge-locked">Bloqueada</span></div></div>';
     }
     var g=grupoDe(item);
     var linkHTML=g?'<div class="members-wrap"><a class="grp-link" href="consultoras-c2.html#'+g.id+'">Ver integrantes de '+g.nombre+' →</a></div>':'';
     return '<div class="card'+(current?' current':'')+'"><div class="card-top"><span class="card-num">'+item.slot+'</span><div class="card-main">'+(current?'<div class="current-badge">⭐ Estadía en curso</div>':'')+
-      '<div class="card-episode">'+item.ep+'</div>'+
+      '<div class="card-episode">'+item.ep+'</div>'+unidadHTML(item)+
       '<div class="card-name">'+nombreGrupo(item)+'</div>'+
-      '<div class="card-date">📅 '+formatDate(item.fecha)+'</div>'+
+      '<div class="card-date">📅 '+fechaYModo(item)+'</div>'+
       '</div>'+badgeHTML(e)+'</div>'+linkHTML+'</div>';
   }).join('');
 }

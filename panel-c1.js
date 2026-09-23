@@ -53,7 +53,7 @@ var data = [
 
   {slot:3,  fecha:"2026-09-28", modalidad:"Presencial", ep:"T1E3: SUMA y Sigue", unidad:"Unidad 3: Sheets", grupo:"gc"},
 
-  {slot:"EXPR", fecha:"2026-10-05", ep:"EXAMEN PRÁCTICO", unidad:"", nota:"Examen Práctico", grupo:""},
+  {slot:"EXPR", fecha:"2026-10-05", modalidad:"Presencial", ep:"EXAMEN PRÁCTICO", unidad:"", nota:"Examen Práctico", grupo:""},
   {slot:"FER2", fecha:"2026-10-12", ep:"", unidad:"", nota:"Feriado", grupo:""},
 
   {slot:4,  fecha:"2026-10-19", modalidad:"Asincrónica", ep:"T1E4: Se BUSCARV al Culpable", unidad:"Unidad 3: Sheets", grupo:"ga"},

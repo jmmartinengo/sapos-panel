@@ -10,16 +10,19 @@
               ("tp" y "reservado" son fijos, no los toques)
    ============================================================ */
 var PANEL = {
-  "DEMO": {revelado:false, current:false, estado:"tp"},
-  1:      {revelado:true,  current:false, estado:"realizada"},
-  2:      {revelado:true,  current:true,  estado:"pendiente"},
-  3:      {revelado:false, current:false, estado:"pendiente"},
-  "TP":   {revelado:false, current:false, estado:"tp"},
-  4:      {revelado:false, current:false, estado:"pendiente"},
-  5:      {revelado:false, current:false, estado:"pendiente"},
-  6:      {revelado:false, current:false, estado:"pendiente"},
-  7:      {revelado:false, current:false, estado:"pendiente"},
-  8:      {revelado:false, current:false, estado:"pendiente"}
+  "PILOTO": {revelado:false, current:false, estado:"tp"},
+  "DEMO":   {revelado:false, current:false, estado:"tp"},
+  1:        {revelado:true,  current:false, estado:"realizada"},
+  2:        {revelado:true,  current:true,  estado:"pendiente"},
+  3:        {revelado:false, current:false, estado:"pendiente"},
+  4:        {revelado:false, current:false, estado:"pendiente"},
+  5:        {revelado:false, current:false, estado:"pendiente"},
+  6:        {revelado:false, current:false, estado:"pendiente"},
+  7:        {revelado:false, current:false, estado:"pendiente"},
+  8:        {revelado:false, current:false, estado:"pendiente"},
+  "PARC":   {revelado:false, current:false, estado:"tp"},
+  "FER":    {revelado:false, current:false, estado:"tp"},
+  "RECU":   {revelado:false, current:false, estado:"tp"}
 };
 
 /* De acá para abajo no hace falta tocar nada. */
@@ -39,17 +42,19 @@ var PANEL = {
    ------------------------------------------------------------ */
 
 var data = [
-  {slot:"DEMO", fecha:"2026-09-01", ep:"T1E1: SOPs del Barro", nota:"Demostración a cargo del profesor", grupo:""},
+  {slot:"PILOTO", fecha:"2026-08-18", modalidad:"Presencial", ep:"Piloto: Bienvenidos a Monte Macondo", unidad:"", grupo:""},
+  {slot:"DEMO",   fecha:"2026-09-01", modalidad:"Virtual", ep:"T1E1: SOPs del Barro 🐸", unidad:"Unidad 1: Drive y Docs", nota:"Demostración a cargo del profesor", grupo:""},
 
-  {slot:1, fecha:"2026-09-08", ep:"T1E2: La Agenda de un Loco", grupo:"ge"},
-  {slot:2, fecha:"2026-09-15", ep:"T1E3: SUMA y Sigue", grupo:"gb"},
-  {slot:3, fecha:"2026-09-22", ep:"T1E4: Se BUSCARV al Culpable", grupo:"ga"},
+  {slot:1, fecha:"2026-09-08", modalidad:"Virtual", ep:"T1E2: La Agenda de un Loco", unidad:"Unidad 2: Calendar", grupo:"ge"},
+  {slot:2, fecha:"2026-09-15", modalidad:"Virtual", ep:"T1E3: SUMA y Sigue", unidad:"Unidad 3: Sheets", grupo:"gb"},
+  {slot:3, fecha:"2026-09-22", modalidad:"Presencial", ep:"T1E4: Se BUSCARV al Culpable", unidad:"Unidad 3: Sheets", grupo:"ga"},
+  {slot:4, fecha:"2026-09-29", modalidad:"Virtual", ep:"T1E5: Guardar las FORMas", unidad:"Unidad 4: Forms", grupo:"gc"},
+  {slot:5, fecha:"2026-10-06", modalidad:"Presencial", ep:"TRABAJO PRÁCTICO OBLIGATORIO", unidad:"", grupo:"gh"},
+  {slot:6, fecha:"2026-10-13", modalidad:"Virtual", ep:"T1E6: ¡Prompt-o Socorro!", unidad:"Unidad 5.1: AI Generativa", grupo:"gg"},
+  {slot:7, fecha:"2026-10-20", modalidad:"Virtual", ep:"T1E7: Poniendo a Macondo en el Mapa · T1E8: Atrayendo Nuevos Aliados", unidad:"Unidades 5.2 y 5.3: Maps, MyMaps y Slides", grupo:"gf"},
+  {slot:8, fecha:"2026-10-27", modalidad:"Virtual", ep:"T1E9: La Gran Migración (PMS Parte 1)", unidad:"Unidad 6: PMS", grupo:"gd"},
 
-  {slot:"TP", fecha:"2026-09-29", ep:"EXAMEN PRÁCTICO", grupo:""},
-
-  {slot:4, fecha:"2026-10-06", ep:"T1E5: Guardar las FORMas", grupo:"gc"},
-  {slot:5, fecha:"2026-10-13", ep:"T1E6: ¡Prompt-o Socorro!", grupo:"gd"},
-  {slot:6, fecha:"2026-10-20", ep:"T1E7: Atrayendo Nuevos Aliados", grupo:"gf"},
-  {slot:7, fecha:"2026-10-27", ep:"T1E8+E9: La Gran Migración", grupo:"gg"},
-  {slot:8, fecha:"2026-10-27", ep:"T1E8+E9: La Gran Migración", grupo:"gh"}
+  {slot:"PARC", fecha:"2026-11-03", modalidad:"Presencial", ep:"EVALUACIÓN PARCIAL", unidad:"", nota:"Examen Parcial", grupo:""},
+  {slot:"FER",  fecha:"2026-11-10", modalidad:"", ep:"", unidad:"", nota:"Feriado", grupo:""},
+  {slot:"RECU", fecha:"2026-11-17", modalidad:"Presencial", ep:"RECUPERATORIOS", unidad:"", nota:"Examen Recuperatorio", grupo:""}
 ];
