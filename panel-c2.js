@@ -16,6 +16,7 @@ var PANEL = {
   2:        {revelado:true,  current:true,  estado:"pendiente"},
   3:        {revelado:false, current:false, estado:"pendiente"},
   4:        {revelado:false, current:false, estado:"pendiente"},
+  "EXPR":   {revelado:false, current:false, estado:"tp"},
   5:        {revelado:false, current:false, estado:"pendiente"},
   6:        {revelado:false, current:false, estado:"pendiente"},
   7:        {revelado:false, current:false, estado:"pendiente"},
@@ -49,8 +50,11 @@ var data = [
   {slot:2, fecha:"2026-09-15", modalidad:"Virtual", ep:"T1E3: SUMA y Sigue", unidad:"Unidad 3: Sheets", grupo:"gb"},
   {slot:3, fecha:"2026-09-22", modalidad:"Presencial", ep:"T1E4: Se BUSCARV al Culpable", unidad:"Unidad 3: Sheets", grupo:"ga"},
   {slot:4, fecha:"2026-09-29", modalidad:"Virtual", ep:"T1E5: Guardar las FORMas", unidad:"Unidad 4: Forms", grupo:"gc"},
-  {slot:5, fecha:"2026-10-06", modalidad:"Presencial", ep:"TRABAJO PRÁCTICO OBLIGATORIO", unidad:"", grupo:"gh"},
-  {slot:6, fecha:"2026-10-13", modalidad:"Virtual", ep:"T1E6: ¡Prompt-o Socorro!", unidad:"Unidad 5.1: AI Generativa", grupo:"gg"},
+
+  {slot:"EXPR", fecha:"2026-10-06", modalidad:"Presencial", ep:"EXAMEN PRÁCTICO", unidad:"", nota:"Examen Práctico", grupo:""},
+
+  {slot:5, fecha:"2026-10-13", modalidad:"Virtual", ep:"T1E6: ¡Prompt-o Socorro!", unidad:"Unidad 5.1: AI Generativa", grupo:"gg"},
+  {slot:6, fecha:"2026-10-13", modalidad:"Virtual", ep:"T1E6: ¡Prompt-o Socorro!", unidad:"Unidad 5.1: AI Generativa", grupo:"gh"},
   {slot:7, fecha:"2026-10-20", modalidad:"Virtual", ep:"T1E7: Poniendo a Macondo en el Mapa · T1E8: Atrayendo Nuevos Aliados", unidad:"Unidades 5.2 y 5.3: Maps, MyMaps y Slides", grupo:"gf"},
   {slot:8, fecha:"2026-10-27", modalidad:"Virtual", ep:"T1E9: La Gran Migración (PMS Parte 1)", unidad:"Unidad 6: PMS", grupo:"gd"},
 
