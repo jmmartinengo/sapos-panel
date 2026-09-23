@@ -128,6 +128,10 @@ function badgeHTML(estado,nota){
   return '<span class="badge '+(map[estado]||'badge-pending')+'">'+(lab[estado]||'Pendiente')+'</span>';
 }
 
+function fechaYModo(item){
+  return formatDate(item.fecha)+(item.modalidad? ' · '+item.modalidad : '');
+}
+
 function unidadHTML(item){
   return item.unidad?'<div class="card-unidad">'+item.unidad+'</div>':'';
 }
@@ -150,18 +154,18 @@ function render(){
     if(e==='especial'){
       return '<div class="card card-tp'+(current?' current':'')+'"><div class="card-top"><span class="card-num">📌</span><div class="card-main">'+(current?'<div class="current-badge">⭐ Clase en curso</div>':'')+
         (item.ep?'<div class="card-name">'+item.ep+'</div>':'')+unidadHTML(item)+
-        '<div class="card-date">📅 '+formatDate(item.fecha)+'</div>'+
+        '<div class="card-date">📅 '+fechaYModo(item)+'</div>'+
         '</div>'+badgeHTML(e,item.nota)+'</div></div>';
     }
     if(!isRevealed(item)){
-      return '<div class="card locked"><div class="card-top"><span class="card-num">'+item.slot+'</span><div style="display:flex;align-items:center;gap:10px;flex:1"><span style="font-size:22px;color:#ccc">🔒</span><div><div style="font-size:13px;color:#aaa">Consultora por revelar</div><div style="font-size:11px;color:#bbb;margin-top:2px">Clase: '+formatDate(item.fecha)+'</div></div></div><span class="badge badge-locked">Bloqueada</span></div></div>';
+      return '<div class="card locked"><div class="card-top"><span class="card-num">'+item.slot+'</span><div style="display:flex;align-items:center;gap:10px;flex:1"><span style="font-size:22px;color:#ccc">🔒</span><div><div style="font-size:13px;color:#aaa">Consultora por revelar</div><div style="font-size:11px;color:#bbb;margin-top:2px">Clase: '+fechaYModo(item)+'</div></div></div><span class="badge badge-locked">Bloqueada</span></div></div>';
     }
     var g=grupoDe(item);
     var linkHTML=g?'<div class="members-wrap"><a class="grp-link" href="consultoras-c1.html#'+g.id+'">Ver integrantes de '+g.nombre+' →</a></div>':'';
     return '<div class="card'+(current?' current':'')+'"><div class="card-top"><span class="card-num">'+item.slot+'</span><div class="card-main">'+(current?'<div class="current-badge">⭐ Estadía en curso</div>':'')+
       '<div class="card-episode">'+item.ep+'</div>'+unidadHTML(item)+
       '<div class="card-name">'+nombreGrupo(item)+'</div>'+
-      '<div class="card-date">📅 '+formatDate(item.fecha)+'</div>'+
+      '<div class="card-date">📅 '+fechaYModo(item)+'</div>'+
       '</div>'+badgeHTML(e,item.nota)+'</div>'+linkHTML+'</div>';
   }).join('');
 }
