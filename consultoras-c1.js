@@ -58,7 +58,8 @@ var CONSULTORAS = [
     {n:"Fonseca Caravello, Azul"},
     {n:"Roberts Conesa, Simona"},
     {n:"Tuntis, Simon"},
-    {n:"Norte, Ignacio Salvador"}
+    {n:"Norte, Ignacio Salvador"},
+    {n:"Pomazan, Zoe"}
   ]},
   {id:"gf", nombre:"Consultora F", members:[
     {n:"Castro, Melani"},
