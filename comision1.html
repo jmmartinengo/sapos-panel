@@ -121,8 +121,9 @@ function formatDate(s){
   return dias[d.getDay()]+' '+d.getDate()+' '+meses[d.getMonth()];
 }
 
-function badgeHTML(estado,nota){
+function badgeHTML(estado,nota,current){
   if(estado==='especial') return '<span class="badge badge-tp">'+(nota||'Sin exposición')+'</span>';
+  if(current&&estado==='pendiente') return '<span class="badge badge-current">En estadía</span>';
   var map={realizada:'badge-done',retrasada:'badge-late',pendiente:'badge-pending'};
   var lab={realizada:'Realizada',retrasada:'Retrasada',pendiente:'Pendiente'};
   return '<span class="badge '+(map[estado]||'badge-pending')+'">'+(lab[estado]||'Pendiente')+'</span>';
@@ -166,7 +167,7 @@ function render(){
       '<div class="card-episode">'+item.ep+'</div>'+unidadHTML(item)+
       '<div class="card-name">'+nombreGrupo(item)+'</div>'+
       '<div class="card-date">📅 '+fechaYModo(item)+'</div>'+
-      '</div>'+badgeHTML(e,item.nota)+'</div>'+linkHTML+'</div>';
+      '</div>'+badgeHTML(e,item.nota,current)+'</div>'+linkHTML+'</div>';
   }).join('');
 }
 

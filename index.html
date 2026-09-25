@@ -129,8 +129,9 @@ function fechaYModo(item){
   return formatDate(item.fecha)+(item.modalidad? ' · '+item.modalidad : '');
 }
 
-function badgeHTML(estado,nota){
+function badgeHTML(estado,nota,current){
   if(estado==='tp') return '<span class="badge badge-tp">'+(nota||'Sin exposición')+'</span>';
+  if(current&&estado==='pendiente') return '<span class="badge badge-current">En estadía</span>';
   if(estado==='reservado') return '<span class="badge badge-reservado">Reservado</span>';
   var map={realizada:'badge-done',retrasada:'badge-late',pendiente:'badge-pending'};
   var lab={realizada:'Realizada',retrasada:'Retrasada',pendiente:'Pendiente'};
@@ -168,7 +169,7 @@ function render(){
       '<div class="card-episode">'+item.ep+'</div>'+unidadHTML(item)+
       '<div class="card-name">'+nombreGrupo(item)+'</div>'+
       '<div class="card-date">📅 '+fechaYModo(item)+'</div>'+
-      '</div>'+badgeHTML(e)+'</div>'+linkHTML+'</div>';
+      '</div>'+badgeHTML(e,item.nota,current)+'</div>'+linkHTML+'</div>';
   }).join('');
 }
 
