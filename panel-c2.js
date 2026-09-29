@@ -13,7 +13,7 @@ var PANEL = {
   "PILOTO": {revelado:false, current:false, estado:"tp"},
   "DEMO":   {revelado:false, current:false, estado:"tp"},
   1:        {revelado:true,  current:false, estado:"realizada"},
-  2:        {revelado:true,  current:true,  estado:"pendiente"},
+  2:        {revelado:true,  current:false, estado:"realizada"},
   3:        {revelado:false, current:false, estado:"pendiente"},
   4:        {revelado:false, current:false, estado:"pendiente"},
   "EXPR":   {revelado:false, current:false, estado:"tp"},
